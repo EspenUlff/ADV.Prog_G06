@@ -36,7 +36,6 @@ import static dk.dtu.compute.se.pisd.roborally.model.Phase.INITIALISATION;
  *
  */
 
-    // TODO getStatusMessage method? måske i ældre versioner? - Espen
 public class Board extends Subject {
 
     public final int width;
@@ -210,6 +209,16 @@ public class Board extends Subject {
             }
         }
         return result;
+    }
+    public String getStatusMessage() {
+        // this is actually a view aspect, but for making assignment V1 easy for
+        // the students, this method gives a string representation of the current
+        // status of the game
+
+        // XXX: V2 changed the status so that it shows the phase, the player and the step
+        return "Phase: " + getPhase().name() +
+                ", Player = " + getCurrentPlayer().getName() +
+                ", Step: " + getStep();
     }
 
 }

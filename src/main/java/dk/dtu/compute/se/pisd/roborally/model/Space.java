@@ -33,6 +33,8 @@ import java.util.List;
  * @author Ekkart Kindler, ekki@dtu.dk
  *
  */
+
+// TODO mangler moveCurrentPlayerToSpace
 public class Space extends Subject {
 
     private Player player;
