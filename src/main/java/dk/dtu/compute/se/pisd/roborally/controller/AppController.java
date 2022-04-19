@@ -10,10 +10,15 @@ public class AppController {
         this.roboRally = roboRally;
     }
 
-    // TODO most methods missing here!
+    // TODO most methods missing here! - low priority
+    // isGameRunning
+    // newGame
+    // stopGame
+    // saveGame
+    // loadGame
 
     public void exit() {
-        // TODO needs to be implemented
+        // TODO needs to be implemented - low priority
     }
 
 

@@ -35,6 +35,8 @@ import static dk.dtu.compute.se.pisd.roborally.model.Phase.INITIALISATION;
  * @author Ekkart Kindler, ekki@dtu.dk
  *
  */
+
+    // TODO getStatusMessage method? måske i ældre versioner? - Espen
 public class Board extends Subject {
 
     public final int width;

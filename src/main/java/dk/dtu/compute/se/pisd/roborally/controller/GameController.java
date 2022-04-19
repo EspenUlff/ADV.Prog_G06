@@ -39,7 +39,9 @@ public class GameController {
     }
 
     // TODO lot of stuff missing here
-
+    // moveCurrentPlayerToSpace (BoardView)
+    // finish/execute/step button actions (PlayerView)
+    // moveCards (CardFieldView)
 
 
     public void moveForward(@NotNull Player player) {
