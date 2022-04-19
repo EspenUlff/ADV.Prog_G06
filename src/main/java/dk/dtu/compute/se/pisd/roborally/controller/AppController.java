@@ -18,7 +18,7 @@ public class AppController {
     // loadGame
 
     public void exit() {
-        // TODO needs to be implemented - low priority
+        System.exit(0);
     }
 
 
