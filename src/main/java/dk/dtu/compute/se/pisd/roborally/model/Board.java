@@ -163,7 +163,14 @@ public class Board extends Subject {
             return -1;
         }
     }
-
+    /** -- getNextPlayer Added ,chvi -- */
+    public void NEXTPLAYER() {
+        int currentPlayer = getPlayerNumber(current);
+        Player next = getPlayer((currentPlayer + 1) % getPlayersNumber());
+        setCurrentPlayer(next);
+        setStep(getStep() +1);
+    }
+    /** -------------------------------- */
     public String getStatusMessage() {
         // XXX: V2 changed the status so that it shows the phase, the player and the step
         return "Phase: " + getPhase().name() +
