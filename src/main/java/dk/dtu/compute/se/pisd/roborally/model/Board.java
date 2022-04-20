@@ -164,6 +164,12 @@ public class Board extends Subject {
         }
     }
 
+    public String getStatusMessage() {
+        // XXX: V2 changed the status so that it shows the phase, the player and the step
+        return "Phase: " + getPhase().name() +
+                ", Player: " + getCurrentPlayer().getName() +
+                ", Step: " + getStep();
+
     /**
      * Returns the neighbour of the given space of the board in the given heading.
      * The neighbour is returned only, if it can be reached from the given space
