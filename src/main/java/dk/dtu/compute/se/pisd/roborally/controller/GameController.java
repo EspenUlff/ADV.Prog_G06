@@ -44,6 +44,17 @@ public class GameController {
     // moveCards (CardFieldView)
 
 
+/** moveCurrentPlayerToSpace Added -chvi */
+//moves the current player and switches to the next player after this move.
+    public void moveCurrentPlayerToSpace(@NotNull Space space) {
+        Player player = board.getCurrentPlayer();
+        if (space.getPlayer() == null) {
+            player.setSpace(space);
+            board.NEXTPLAYER();
+        }
+    }
+
+    /** -------------------------------- */
     public void moveForward(@NotNull Player player) {
         if (player.board == board) {
             Space space = player.getSpace();
@@ -83,6 +94,8 @@ public class GameController {
         }
         player.setSpace(space);
     }
+
+
 
     class ImpossibleMoveException extends Exception {
 
