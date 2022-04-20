@@ -191,7 +191,7 @@ public class PlayerView extends Tab implements ViewObserver {
                 }
 
 
-            } else {
+            } /*else {
                 if (!programPane.getChildren().contains(playerInteractionPanel)) {
                     programPane.getChildren().remove(buttonPanel);
                     programPane.add(playerInteractionPanel, Player.NO_REGISTERS, 0);
@@ -213,7 +213,7 @@ public class PlayerView extends Tab implements ViewObserver {
                     optionButton.setDisable(false);
                     playerInteractionPanel.getChildren().add(optionButton);
                 }
-            }
+            }*/
         }
     }
 
