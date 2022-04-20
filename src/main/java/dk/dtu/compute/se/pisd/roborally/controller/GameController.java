@@ -97,6 +97,18 @@ public class GameController {
 
 
 
+    public boolean moveCards(@NotNull CommandCardField source, @NotNull CommandCardField target) {
+        CommandCard sourceCard = source.getCard();
+        CommandCard targetCard = target.getCard();
+        if (sourceCard != null && targetCard == null) {
+            target.setCard(sourceCard);
+            source.setCard(null);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     class ImpossibleMoveException extends Exception {
 
         private Player player;
