@@ -14,8 +14,8 @@ import java.util.Optional;
 
 public class AppController {
 
-    final List<Integer> PLAYER_NUMBER_OPTIONS = Arrays.asList(1, 2, 3, 4, 5, 6);
-    final List<String> PLAYER_COLORS = Arrays.asList("green", "blue", "red", "brown", "black", "white");
+    final List<Integer> PLAYER_NUMBER_OPTIONS = Arrays.asList(2, 3, 4, 5, 6);
+    final List<String> PLAYER_COLORS = Arrays.asList("green", "blue", "red", "brown", "black", "yellow");
 
     RoboRally roboRally;
     GameController gameController;
