@@ -118,6 +118,9 @@ public class AppController {
         }
     }
 
+    public boolean isGameRunning() {
+        return gameController != null;
+    }
 
 
 }
