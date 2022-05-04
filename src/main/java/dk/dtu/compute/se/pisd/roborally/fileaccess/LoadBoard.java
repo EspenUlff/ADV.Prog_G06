@@ -32,6 +32,8 @@ import dk.dtu.compute.se.pisd.roborally.model.Board;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.StandardOpenOption;
 
 /**
  * ...
@@ -123,7 +125,7 @@ public class LoadBoard {
 
         // In simple cases, we can create a Gson object with new:
         //
-        //   Gson gson = new Gson();
+        // Gson gson = new Gson();
         //
         // But, if you need to configure it, it is better to create it from
         // a builder (here, we want to configure the JSON serialisation with
