@@ -68,11 +68,20 @@ public class SpaceView extends StackPane implements ViewObserver {
             this.setStyle("-fx-background-color: black;");
         }
 
-        // updatePlayer();
-
         // This space view should listen to changes of the space
         space.attach(this);
         update(space);
+    }
+
+    // makes walls ! problem with a wall on every row
+    private void UpdateWalls(){
+        Canvas canvas = new Canvas(SPACE_WIDTH,SPACE_HEIGHT);
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+        gc.setStroke(Color.CYAN);
+        gc.setLineWidth(6);
+        gc.setLineCap(StrokeLineCap.ROUND);
+        gc.strokeLine(2,SPACE_HEIGHT-2, SPACE_WIDTH -2, SPACE_HEIGHT-2);
+        this.getChildren().add(canvas);
     }
 
     private void updatePlayer() {
@@ -100,17 +109,5 @@ public class SpaceView extends StackPane implements ViewObserver {
             updatePlayer();
             UpdateWalls();
         }
-    }
-
-    // makes walls ! problem with a wall on every row
-    private void UpdateWalls(){
-       Canvas canvas = new Canvas(SPACE_WIDTH,SPACE_HEIGHT);
-       GraphicsContext gc = canvas.getGraphicsContext2D();
-       gc.setStroke(Color.CYAN);
-       gc.setLineWidth(6);
-       gc.setLineCap(StrokeLineCap.ROUND);
-
-       gc.strokeLine(2,SPACE_HEIGHT-2, SPACE_WIDTH -2, SPACE_HEIGHT-2);
-       this.getChildren().add(canvas);
     }
 }
