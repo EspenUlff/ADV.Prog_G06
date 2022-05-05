@@ -76,8 +76,10 @@ public class LoadBoard {
 			BoardTemplate template = gson.fromJson(reader, BoardTemplate.class);
 
 			result = new Board(template.width, template.height);
-            for (PlayerTemplate player: template.players) {
-                result.addPlayer(new Player(result, player.color, player.name));
+            for (PlayerTemplate playerT: template.players) {
+                Player player = new Player(result, playerT.color, playerT.name);
+                player.setSpace(result.getSpace(playerT.x, playerT.y));
+                result.addPlayer(player);
             }
 
 			for (SpaceTemplate spaceTemplate: template.spaces) {
@@ -110,7 +112,6 @@ public class LoadBoard {
         BoardTemplate template = new BoardTemplate();
         template.width = board.width;
         template.height = board.height;
-        //template.players = board.getPlayers();
 
         for (int i=0; i<board.width; i++) {
             for (int j=0; j<board.height; j++) {
@@ -124,6 +125,10 @@ public class LoadBoard {
                     template.spaces.add(spaceTemplate);
                 }
             }
+        }
+
+        for (Player player: board.getPlayers()) {
+            template.players.add(new PlayerTemplate(player.getName(), player.getColor(), player.getSpace().x, player.getSpace().y, player.getHeading()));
         }
 
         ClassLoader classLoader = LoadBoard.class.getClassLoader();
@@ -141,19 +146,22 @@ public class LoadBoard {
         // a builder (here, we want to configure the JSON serialisation with
         // a pretty printer):
         GsonBuilder simpleBuilder = new GsonBuilder().
-                registerTypeAdapter(FieldAction.class, new Adapter<FieldAction>()).
-                registerTypeAdapter(Player.class, new Adapter<Player>()).
+                //registerTypeAdapter(FieldAction.class, new Adapter<FieldAction>()).
+                //registerTypeAdapter(PlayerTemplate.class, new Adapter<PlayerTemplate>()).
                 setPrettyPrinting();
         Gson gson = simpleBuilder.create();
 
         FileWriter fileWriter = null;
         JsonWriter writer = null;
         try {
-            fileWriter = new FileWriter(filename);
+            File file = new File(filename);
+            //file.createNewFile();
+            fileWriter = new FileWriter(file);
             writer = gson.newJsonWriter(fileWriter);
             gson.toJson(template, template.getClass(), writer);
             writer.close();
         } catch (IOException e1) {
+            e1.printStackTrace();
             if (writer != null) {
                 try {
                     writer.close();

@@ -20,7 +20,6 @@ public class AppController {
 
     RoboRally roboRally;
     GameController gameController;
-    Board board = null;
 
     public AppController(RoboRally roboRally) {
         this.roboRally = roboRally;
@@ -49,7 +48,7 @@ public class AppController {
 
             // XXX the board should eventually be created programmatically or loaded from a file
             //     here we just create an empty board with the required number of players.
-            board = new Board(8,8);
+            Board board = new Board(8,8);
             gameController = new GameController(board);
             int no = result.get();
             for (int i = 0; i < no; i++) {
@@ -68,7 +67,7 @@ public class AppController {
 
     public void saveGame() {
         // XXX needs to be implemented eventually
-        LoadBoard.saveBoard(board,"SavedGame");
+        LoadBoard.saveBoard(gameController.board,"SavedGame");
     }
 
     public void loadGame() {
