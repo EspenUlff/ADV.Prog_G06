@@ -113,6 +113,10 @@ public class Board extends Subject {
         }
     }
 
+    public List<Player> getPlayers() {
+        return players;
+    }
+
     public Player getCurrentPlayer() {
         return current;
     }
@@ -175,6 +179,7 @@ public class Board extends Subject {
     public String getStatusMessage() {
         // XXX: V2 changed the status so that it shows the phase, the player and the step
         return "Phase: " + getPhase().name() +
+
                 ", Player: " + getCurrentPlayer().getName() +
                 ", Step: " + getStep();
     }

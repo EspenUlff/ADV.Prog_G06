@@ -26,9 +26,11 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import dk.dtu.compute.se.pisd.roborally.fileaccess.model.BoardTemplate;
+import dk.dtu.compute.se.pisd.roborally.fileaccess.model.PlayerTemplate;
 import dk.dtu.compute.se.pisd.roborally.fileaccess.model.SpaceTemplate;
 import dk.dtu.compute.se.pisd.roborally.controller.FieldAction;
 import dk.dtu.compute.se.pisd.roborally.model.Board;
+import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 
 import java.io.*;
@@ -60,8 +62,10 @@ public class LoadBoard {
 
 		// In simple cases, we can create a Gson object with new Gson():
         GsonBuilder simpleBuilder = new GsonBuilder().
+                registerTypeAdapter(Player.class, new Adapter<Player>()).
                 registerTypeAdapter(FieldAction.class, new Adapter<FieldAction>());
-        Gson gson = simpleBuilder.create();
+
+                Gson gson = simpleBuilder.create();
 
 		Board result;
 		// FileReader fileReader = null;
@@ -72,6 +76,10 @@ public class LoadBoard {
 			BoardTemplate template = gson.fromJson(reader, BoardTemplate.class);
 
 			result = new Board(template.width, template.height);
+            for (PlayerTemplate player: template.players) {
+                result.addPlayer(new Player(result, player.color, player.name));
+            }
+
 			for (SpaceTemplate spaceTemplate: template.spaces) {
 			    Space space = result.getSpace(spaceTemplate.x, spaceTemplate.y);
 			    if (space != null) {
@@ -79,6 +87,7 @@ public class LoadBoard {
                     space.getWalls().addAll(spaceTemplate.walls);
                 }
             }
+
 			reader.close();
 			return result;
 		} catch (IOException e1) {
@@ -101,6 +110,7 @@ public class LoadBoard {
         BoardTemplate template = new BoardTemplate();
         template.width = board.width;
         template.height = board.height;
+        //template.players = board.getPlayers();
 
         for (int i=0; i<board.width; i++) {
             for (int j=0; j<board.height; j++) {
@@ -132,6 +142,7 @@ public class LoadBoard {
         // a pretty printer):
         GsonBuilder simpleBuilder = new GsonBuilder().
                 registerTypeAdapter(FieldAction.class, new Adapter<FieldAction>()).
+                registerTypeAdapter(Player.class, new Adapter<Player>()).
                 setPrettyPrinting();
         Gson gson = simpleBuilder.create();
 

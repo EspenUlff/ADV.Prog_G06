@@ -74,8 +74,8 @@ public class AppController {
     public void loadGame() {
         // XXX needs to be implememted eventually
         // for now, we just create a new game
-        LoadBoard.loadBoard("SavedGame");
-        gameController = new GameController(board);
+        gameController = new GameController(LoadBoard.loadBoard("SavedGame"));
+        gameController.startProgrammingPhase();
         roboRally.createBoardView(gameController);
     }
 

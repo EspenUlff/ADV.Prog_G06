@@ -31,7 +31,6 @@ import javafx.scene.control.TabPane;
  * ...
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- *
  */
 public class PlayersView extends TabPane implements ViewObserver {
 
@@ -45,7 +44,7 @@ public class PlayersView extends TabPane implements ViewObserver {
         this.setTabClosingPolicy(TabClosingPolicy.UNAVAILABLE);
 
         playerViews = new PlayerView[board.getPlayersNumber()];
-        for (int i = 0; i < board.getPlayersNumber();  i++) {
+        for (int i = 0; i < board.getPlayersNumber(); i++) {
             playerViews[i] = new PlayerView(gameController, board.getPlayer(i));
             this.getTabs().add(playerViews[i]);
         }
@@ -57,7 +56,9 @@ public class PlayersView extends TabPane implements ViewObserver {
     public void updateView(Subject subject) {
         if (subject == board) {
             Player current = board.getCurrentPlayer();
-            this.getSelectionModel().select(board.getPlayerNumber(current));
+            if (current != null) {
+                this.getSelectionModel().select(board.getPlayerNumber(current));
+            }
         }
     }
 
