@@ -40,7 +40,12 @@ public enum Command {
     LEFT("Turn Left"),
     FAST_FORWARD("Fast Fwd"),
 
-    OPTION_LEFT_RIGHT("Left OR Right", LEFT, RIGHT);
+    U_TURN("U-Turn"),
+    TRIPLE_FORWARD("Triple Fwd"),
+    BACKUP("Move Back"),
+
+    SANDBOX_ROUTINE("SANDBOX ROUTINE", LEFT, RIGHT, U_TURN, FORWARD, FAST_FORWARD, TRIPLE_FORWARD, BACKUP),
+    WEASEL_ROUTINE("WEASEL ROUTINE", LEFT, RIGHT, U_TURN);
 
     final public String displayName;
 

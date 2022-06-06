@@ -32,6 +32,11 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
+
+import static dk.dtu.compute.se.pisd.roborally.model.Command.LEFT;
+import static dk.dtu.compute.se.pisd.roborally.model.Command.RIGHT;
+
 /**
  * ...
  *
@@ -191,7 +196,11 @@ public class PlayerView extends Tab implements ViewObserver {
                 }
 
 
-            } /*else {
+            }
+            // added by chvi - this adds the option to choose between the different commands which a command card can have.
+            else {
+
+
                 if (!programPane.getChildren().contains(playerInteractionPanel)) {
                     programPane.getChildren().remove(buttonPanel);
                     programPane.add(playerInteractionPanel, Player.NO_REGISTERS, 0);
@@ -203,17 +212,24 @@ public class PlayerView extends Tab implements ViewObserver {
                     //      an interactive command card, and the buttons should represent
                     //      the player's choices of the interactive command card. The
                     //      following is just a mockup showing two options
-                    Button optionButton = new Button("Option1");
-                    optionButton.setOnAction( e -> gameController.notImplemented());
-                    optionButton.setDisable(false);
-                    playerInteractionPanel.getChildren().add(optionButton);
 
-                    optionButton = new Button("Option 2");
-                    optionButton.setOnAction( e -> gameController.notImplemented());
-                    optionButton.setDisable(false);
-                    playerInteractionPanel.getChildren().add(optionButton);
+                    CommandCard card = player.getProgramField(player.board.getStep()).getCard();
+                    Command command = card.command;
+                    List<Command> options = command.getOptions();
+
+                    if (options != null && Phase.PLAYER_INTERACTION == player.board.getPhase()) {
+
+                        Button interactiveButton;
+                        for (Command option : options) {
+
+                            interactiveButton = new Button(option.displayName);
+                            interactiveButton.setOnAction(e -> gameController.cardOption(option));
+                            interactiveButton.setDisable(false);
+                            playerInteractionPanel.getChildren().add(interactiveButton);
+                        }
+                    }
                 }
-            }*/
+            }
         }
     }
 

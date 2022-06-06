@@ -138,12 +138,21 @@ public class GameController {
     // XXX: V2
     private void executeNextStep() {
         Player currentPlayer = board.getCurrentPlayer();
+
         if (board.getPhase() == Phase.ACTIVATION && currentPlayer != null) {
             int step = board.getStep();
             if (step >= 0 && step < Player.NO_REGISTERS) {
                 CommandCard card = currentPlayer.getProgramField(step).getCard();
                 if (card != null) {
                     Command command = card.command;
+
+                    /** interactive card */
+
+                    if (command.isInteractive()) {
+                        board.setPhase(Phase.PLAYER_INTERACTION);
+                        return;
+                    }
+
                     executeCommand(currentPlayer, command);
                 }
                 int nextPlayerNumber = board.getPlayerNumber(currentPlayer) + 1;
@@ -189,11 +198,56 @@ public class GameController {
                 case FAST_FORWARD:
                     this.fastForward(player);
                     break;
+                case TRIPLE_FORWARD:
+                    this.moveForward(player);
+                    this.fastForward(player);
+                    break;
+                case U_TURN:
+                    this.turnaround(player);
+                    break;
+                case BACKUP:
+                    this.turnaround(player);
+                    this.moveForward(player);
+                    this.turnaround(player);
+                    break;
                 default:
                     // DO NOTHING (for now)
             }
         }
     }
+
+    /** card option */
+    public void cardOption(Command option) {
+        Player currentPlayer = board.getCurrentPlayer();
+
+        if (board.getPhase() == Phase.PLAYER_INTERACTION && currentPlayer != null) {
+            int step = board.getStep();
+
+            if (step >= 0 && step < Player.NO_REGISTERS) {
+
+                executeCommand(currentPlayer, option);
+                board.setPhase(Phase.ACTIVATION);
+
+            }
+
+            int nextPlayerNumber = board.getPlayerNumber(currentPlayer) + 1;
+            if (nextPlayerNumber < board.getPlayersNumber()) {
+                board.setCurrentPlayer(board.getPlayer(nextPlayerNumber));
+
+            } else {
+                step++;
+
+
+                if (step < Player.NO_REGISTERS) {
+                    makeProgramFieldsVisible(step);
+                    board.setStep(step);
+                    board.setCurrentPlayer(board.getPlayer(0));
+                } else {
+                    startProgrammingPhase();
+                }
+            }
+        }
+    }/** card options slut. */
 
     // TODO: V2
     public void moveForward(@NotNull Player player) {
@@ -207,6 +261,14 @@ public class GameController {
                 //     implemented in a way so that other players are pushed away!
                 target.setPlayer(player);
             }
+        }
+    }
+    public void turnaround(@NotNull Player player){
+        if (player != null && player.board == board) {
+            player.setHeading(player.getHeading().next());
+        }
+        if (player != null && player.board == board) {
+            player.setHeading(player.getHeading().next());
         }
     }
 
