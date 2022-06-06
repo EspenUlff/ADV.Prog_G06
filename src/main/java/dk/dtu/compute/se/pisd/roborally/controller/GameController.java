@@ -224,20 +224,15 @@ public class GameController {
             int step = board.getStep();
 
             if (step >= 0 && step < Player.NO_REGISTERS) {
-
                 executeCommand(currentPlayer, option);
                 board.setPhase(Phase.ACTIVATION);
-
             }
 
             int nextPlayerNumber = board.getPlayerNumber(currentPlayer) + 1;
             if (nextPlayerNumber < board.getPlayersNumber()) {
                 board.setCurrentPlayer(board.getPlayer(nextPlayerNumber));
-
             } else {
                 step++;
-
-
                 if (step < Player.NO_REGISTERS) {
                     makeProgramFieldsVisible(step);
                     board.setStep(step);
@@ -252,6 +247,8 @@ public class GameController {
     // TODO: V2
     public void moveForward(@NotNull Player player) {
         Space space = player.getSpace();
+
+
         if (player != null && player.board == board && space != null) {
             Heading heading = player.getHeading();
             Space target = board.getNeighbour(space, heading);
@@ -259,7 +256,24 @@ public class GameController {
                 // XXX note that this removes an other player from the space, when there
                 //     is another player on the target. Eventually, this needs to be
                 //     implemented in a way so that other players are pushed away!
+/**
+                if (target.getPlayer() == null){
+                    target.setPlayer(player);
+                    System.out.println("there was no player on the spot");
+                }
+                if (target.getPlayer() != null){
+                    Player targetplayer = target.getPlayer();
+                    moveForward(targetplayer);
+
+                    target.setPlayer(player);
+                    System.out.println("this happened, THERE WAS A PLAYER ON THE SPOT");
+                } */
+                if(target.getPlayer() != null){
+                    Player targetplayer = target.getPlayer();
+                    moveForward(targetplayer);
+                }
                 target.setPlayer(player);
+                // dont know what happens with obstacles
             }
         }
     }
