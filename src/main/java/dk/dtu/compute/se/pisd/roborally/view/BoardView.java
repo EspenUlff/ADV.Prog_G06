@@ -77,7 +77,7 @@ public class BoardView extends VBox implements ViewObserver {
                 spaceView.setOnMouseClicked(spaceEventHandler);
             }
         }
-
+        //board.getSpace(1,2).
         board.attach(this);
         update(board);
     }

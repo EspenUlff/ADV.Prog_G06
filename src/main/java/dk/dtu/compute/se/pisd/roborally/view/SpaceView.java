@@ -22,6 +22,7 @@
 package dk.dtu.compute.se.pisd.roborally.view;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
+import dk.dtu.compute.se.pisd.roborally.controller.ConveyorBelt;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
@@ -62,11 +63,20 @@ public class SpaceView extends StackPane implements ViewObserver {
         this.setMinHeight(SPACE_HEIGHT);
         this.setMaxHeight(SPACE_HEIGHT);
 
+
+
         if ((space.x + space.y) % 2 == 0) {
-            this.setStyle("-fx-background-color: white;");
+            this.setStyle("-fx-background-color: pink;");
         } else {
             this.setStyle("-fx-background-color: black;");
         }
+        if (space.x == 5 && space.y == 2){
+            this.setStyle("-fx-background-color: red;");
+            this.space.insertConveyerbelt();
+        }
+
+
+
 
         // This space view should listen to changes of the space
         space.attach(this);
@@ -77,7 +87,7 @@ public class SpaceView extends StackPane implements ViewObserver {
     private void UpdateWalls(){
         Canvas canvas = new Canvas(SPACE_WIDTH,SPACE_HEIGHT);
         GraphicsContext gc = canvas.getGraphicsContext2D();
-        gc.setStroke(Color.CYAN);
+        gc.setStroke(Color.GREEN);
         gc.setLineWidth(6);
         gc.setLineCap(StrokeLineCap.ROUND);
         gc.strokeLine(2,SPACE_HEIGHT-2, SPACE_WIDTH -2, SPACE_HEIGHT-2);
@@ -103,11 +113,29 @@ public class SpaceView extends StackPane implements ViewObserver {
         }
     }
 
+    // TODO FIX THIS METHOD CHRIS  - conveyor
+    private void updateBelt(){
+        ConveyorBelt belt = space.insertConveyerbelt();
+        if (belt != null) {
+
+            Polygon fig = new Polygon(0.0, 0.0,
+                    60.0, 0.0,
+                    30.0, 60.0);
+
+            fig.setFill(Color.BLUE);
+
+            fig.setRotate((90*belt.getHeading().ordinal())%360);
+            this.getChildren().add(fig);
+        }
+    }
+
     @Override
     public void updateView(Subject subject) {
         if (subject == this.space) {
+            updateBelt();
             updatePlayer();
             UpdateWalls();
+
         }
     }
 }

@@ -47,8 +47,16 @@ public class ConveyorBelt extends FieldAction {
 
     @Override
     public boolean doAction(@NotNull GameController gameController, @NotNull Space space) {
-        // TODO needs to be implemented - low priority
-        return false;
+// TODO FIX THIS METHOD CHRIS - conveyor
+        gameController.moveForward(space.getPlayer());
+
+
+        Heading PlayerHeadstowards = space.getPlayer().getHeading();
+
+        //doesnt work, but first we have to get them on the board.
+
+        return true;
+
     }
 
 }
