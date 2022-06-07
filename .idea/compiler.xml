@@ -8,16 +8,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="roborally" />
         <module name="restful" />
+        <module name="ADV.Prog_G06" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="restful" options="-parameters" />
-    </option>
-  </component>
-  <component name="JavacSettings">
-    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="roborally" options="--add-modules java.base" />
     </option>
   </component>
