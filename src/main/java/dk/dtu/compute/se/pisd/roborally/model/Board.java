@@ -223,4 +223,7 @@ public class Board extends Subject {
             }
             return result;
         }
+        private void BlockedWalls() {
+
+        }
     }

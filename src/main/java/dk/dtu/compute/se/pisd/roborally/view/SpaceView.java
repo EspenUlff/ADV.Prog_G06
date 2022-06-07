@@ -84,14 +84,47 @@ public class SpaceView extends StackPane implements ViewObserver {
     }
 
     // makes walls ! problem with a wall on every row
-    private void UpdateWalls(){
-        Canvas canvas = new Canvas(SPACE_WIDTH,SPACE_HEIGHT);
-        GraphicsContext gc = canvas.getGraphicsContext2D();
-        gc.setStroke(Color.GREEN);
-        gc.setLineWidth(6);
-        gc.setLineCap(StrokeLineCap.ROUND);
-        gc.strokeLine(2,SPACE_HEIGHT-2, SPACE_WIDTH -2, SPACE_HEIGHT-2);
-        this.getChildren().add(canvas);
+    private void UpdateWalls() {
+        if (space.x == 2 && space.y == 5) {
+            Canvas canvas = new Canvas(SPACE_WIDTH, SPACE_HEIGHT);
+            GraphicsContext gc = canvas.getGraphicsContext2D();
+            gc.setStroke(Color.GREEN);
+            gc.setLineWidth(6);
+            gc.setLineCap(StrokeLineCap.ROUND);
+            //horizontal line//
+            gc.strokeLine(2, SPACE_HEIGHT - 2, SPACE_WIDTH - 2, SPACE_HEIGHT - 2);
+            this.getChildren().add(canvas);
+        }
+        if (space.x == 2 && space.y == 5) {
+            Canvas canvas = new Canvas(SPACE_WIDTH, SPACE_HEIGHT);
+            GraphicsContext gc = canvas.getGraphicsContext2D();
+            gc.setStroke(Color.GREEN);
+            gc.setLineWidth(6);
+            gc.setLineCap(StrokeLineCap.ROUND);
+            //vertical left side line//
+            gc.strokeLine(2, SPACE_HEIGHT - 400, SPACE_WIDTH - 58, SPACE_HEIGHT );
+            this.getChildren().add(canvas);
+        }
+        if (space.x == 3 && space.y == 5) {
+            Canvas canvas = new Canvas(SPACE_WIDTH, SPACE_HEIGHT);
+            GraphicsContext gc = canvas.getGraphicsContext2D();
+            gc.setStroke(Color.GREEN);
+            gc.setLineWidth(6);
+            gc.setLineCap(StrokeLineCap.ROUND);
+            //horizontal line//
+            gc.strokeLine(2, SPACE_HEIGHT - 2, SPACE_WIDTH - 2, SPACE_HEIGHT-2 );
+            this.getChildren().add(canvas);
+        }
+        if (space.x == 4 && space.y == 5) {
+            Canvas canvas = new Canvas(SPACE_WIDTH, SPACE_HEIGHT);
+            GraphicsContext gc = canvas.getGraphicsContext2D();
+            gc.setStroke(Color.GREEN);
+            gc.setLineWidth(6);
+            gc.setLineCap(StrokeLineCap.ROUND);
+            //vertical left side line//
+            gc.strokeLine(2, SPACE_HEIGHT - 400, SPACE_WIDTH - 58, SPACE_HEIGHT);
+            this.getChildren().add(canvas);
+        }
     }
 
     private void updatePlayer() {
