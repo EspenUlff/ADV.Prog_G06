@@ -173,9 +173,9 @@ public class SpaceView extends StackPane implements ViewObserver {
 
         // TODO FIX tallet til at blive set - Jacob
         if (space.x == 6 && space.y == 6) {
-            //Checkpoint CP1 = space.insertCheckpoint();
+            //Checkpoint CP1;
             //CP1.setValue(1);
-            this.setStyle("-fx-background-color: Gold");
+            this.setStyle("-fx-background-color: Orange");
             Label cp1 = new Label("1");
             cp1.setFont(Font.font("Tahoma",40));
             cp1.setTextFill(Color.AQUA);
@@ -184,7 +184,7 @@ public class SpaceView extends StackPane implements ViewObserver {
         if (space.x == 1 && space.y == 5) {
             //Checkpoint CP2 = space.insertCheckpoint();
             //CP2.setValue(2);
-            this.setStyle("-fx-background-color: Gold");
+            this.setStyle("-fx-background-color: Orange");
             Label cp2 = new Label("2");
             cp2.setFont(Font.font("Tahoma",40));
             cp2.setTextFill(Color.AQUA);
@@ -193,7 +193,7 @@ public class SpaceView extends StackPane implements ViewObserver {
         if (space.x == 5 && space.y == 0) {
             //Checkpoint CP3 = space.insertCheckpoint();
             //CP3.setValue(3);
-            this.setStyle("-fx-background-color: Gold");
+            this.setStyle("-fx-background-color: Orange");
             Label cp3 = new Label("3");
             cp3.setFont(Font.font("Tahoma",40));
             cp3.setTextFill(Color.AQUA);
@@ -202,7 +202,7 @@ public class SpaceView extends StackPane implements ViewObserver {
         if (space.x == 4 && space.y == 3) {
             //Checkpoint CP4 = space.insertCheckpoint();
             //CP4.setValue(4);
-            this.setStyle("-fx-background-color: Gold");
+            this.setStyle("-fx-background-color: Orange");
             Label cp4 = new Label("4");
             cp4.setFont(Font.font("Tahoma",40));
             cp4.setTextFill(Color.AQUA);
