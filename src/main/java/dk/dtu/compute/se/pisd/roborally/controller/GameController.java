@@ -306,6 +306,22 @@ public class GameController {
         }
     }
 
+    public void Scoring(@NotNull Player player, @NotNull Space space) {
+        space = player.getSpace();
+        // TODO Fix space til at være checkpoint og ikke notnull og fix value til at være checkpoint value.
+        if (player != null && player.board == board && space != null) {
+            int value;
+            value = 0;
+            player.setProgress(value);
+        }
+        // TODO Lave en måde at gå tilbage til menuen - Jacob
+        if (player.getProgress() == 4) {
+            // "player blah wins"
+            // "Start a new game?"
+            // mulighed for at sige ja til at starte et nyt spil eller lukke appen.
+        }
+    }
+
     void moveToSpace(@NotNull Player player, @NotNull Space space, @NotNull Heading heading) throws ImpossibleMoveException {
         assert board.getNeighbour(player.getSpace(), heading) == space; // make sure the move to here is possible in principle
         Player other = space.getPlayer();

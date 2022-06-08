@@ -28,6 +28,8 @@ import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -35,7 +37,11 @@ import javafx.scene.shape.Line;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.StrokeLineCap;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import org.jetbrains.annotations.NotNull;
+
+import java.awt.*;
 
 /**
  * ...
@@ -74,8 +80,13 @@ public class SpaceView extends StackPane implements ViewObserver {
             this.setStyle("-fx-background-color: red;");
             this.space.insertConveyerbelt();
         }
+        // TODO FIX tallet til at blive set - Jacob
         if (space.x == 6 && space.y == 6){
             this.setStyle("-fx-background-color: yellow");
+            Label cp1 = new Label("1");
+            cp1.setStyle("-fx-color-label-visible: Blue");
+            this.getChildren().add(cp1);
+            this.space.insertCheckpoint();
             // this.space.insertCheckpoint();
         }
         if (space.x == 1 && space.y == 5){

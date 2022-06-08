@@ -22,6 +22,7 @@
 package dk.dtu.compute.se.pisd.roborally.model;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
+import dk.dtu.compute.se.pisd.roborally.controller.Checkpoint;
 import dk.dtu.compute.se.pisd.roborally.controller.ConveyorBelt;
 import dk.dtu.compute.se.pisd.roborally.controller.FieldAction;
 
@@ -82,6 +83,17 @@ public class Space extends Subject {
             }
         }
         return CB;
+    }
+    // TODO lave metode for CP - Jacob
+    public Checkpoint insertCheckpoint(){
+        Checkpoint CP = null;
+
+        for (FieldAction action : actions) {
+            if (action instanceof Checkpoint && CP == null) {
+                CP = (Checkpoint) action;
+            }
+        }
+        return CP;
     }
 
 

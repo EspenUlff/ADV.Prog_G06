@@ -16,7 +16,7 @@ public class Checkpoint extends FieldAction {
     @Override
     public boolean doAction(@NotNull GameController gameController, @NotNull Space space) {
 // TODO Create method - Jacob
-        // If player prog = value - 1 set player prog to value
+
         return true;
 
     }
