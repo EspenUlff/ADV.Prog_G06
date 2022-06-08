@@ -64,23 +64,51 @@ public class SpaceView extends StackPane implements ViewObserver {
         this.setMaxHeight(SPACE_HEIGHT);
 
 
-
         if ((space.x + space.y) % 2 == 0) {
             this.setStyle("-fx-background-color: white;");
         } else {
             this.setStyle("-fx-background-color: black;");
         }
-        if (space.x == 5 && space.y == 2){
-            this.setStyle("-fx-background-color: red;");
-            this.space.insertConveyerbelt();
-        }
-
-
-
 
         // This space view should listen to changes of the space
         space.attach(this);
         update(space);
+    }
+    // TODO FIX THIS METHOD CHRIS  - conveyor
+    private void updateBelt() {
+
+        if (space.x == 2 && space.y == 3) {
+            Polygon fig = new Polygon(0.0, 5.0,
+                    55.0, 5.0,
+                    30.0, 55.0);
+            fig.setFill(Color.YELLOW);
+            fig.setRotate(180);
+            this.getChildren().add(fig);
+        }
+        if (space.x == 2 && space.y == 4) {
+            Polygon fig = new Polygon(0.0, 5.0,
+                    55.0, 5.0,
+                    30.0, 55.0);
+            fig.setFill(Color.YELLOW);
+            fig.setRotate(180);
+            this.getChildren().add(fig);
+        }
+        if (space.x == 2 && space.y == 5) {
+            Polygon fig = new Polygon(0.0, 5.0,
+                    55.0, 5.0,
+                    30.0, 55.0);
+            fig.setFill(Color.YELLOW);
+            fig.setRotate(180);
+            this.getChildren().add(fig);
+        }
+        if (space.x == 2 && space.y == 6) {
+            Polygon fig = new Polygon(0.0, 5.0,
+                    55.0, 5.0,
+                    30.0, 55.0);
+            fig.setFill(Color.YELLOW);
+            fig.setRotate(180);
+            this.getChildren().add(fig);
+        }
     }
 
     // makes walls ! problem with a wall on every row
@@ -102,7 +130,7 @@ public class SpaceView extends StackPane implements ViewObserver {
             gc.setLineWidth(6);
             gc.setLineCap(StrokeLineCap.ROUND);
             //vertical left side line//
-            gc.strokeLine(2, SPACE_HEIGHT - 400, SPACE_WIDTH - 58, SPACE_HEIGHT );
+            gc.strokeLine(2, SPACE_HEIGHT - 400, SPACE_WIDTH - 58, SPACE_HEIGHT);
             this.getChildren().add(canvas);
         }
         if (space.x == 3 && space.y == 5) {
@@ -112,7 +140,7 @@ public class SpaceView extends StackPane implements ViewObserver {
             gc.setLineWidth(6);
             gc.setLineCap(StrokeLineCap.ROUND);
             //horizontal line//
-            gc.strokeLine(2, SPACE_HEIGHT - 2, SPACE_WIDTH - 2, SPACE_HEIGHT-2 );
+            gc.strokeLine(2, SPACE_HEIGHT - 2, SPACE_WIDTH - 2, SPACE_HEIGHT - 2);
             this.getChildren().add(canvas);
         }
         if (space.x == 4 && space.y == 5) {
@@ -125,6 +153,8 @@ public class SpaceView extends StackPane implements ViewObserver {
             gc.strokeLine(2, SPACE_HEIGHT - 400, SPACE_WIDTH - 58, SPACE_HEIGHT);
             this.getChildren().add(canvas);
         }
+
+
     }
 
     private void updatePlayer() {
@@ -144,31 +174,20 @@ public class SpaceView extends StackPane implements ViewObserver {
             arrow.setRotate((90 * player.getHeading().ordinal()) % 360);
             this.getChildren().add(arrow);
         }
+
     }
 
-    // TODO FIX THIS METHOD CHRIS  - conveyor
-    private void updateBelt(){
-        ConveyorBelt belt = space.insertConveyerbelt();
-        if (belt != null) {
-
-            Polygon fig = new Polygon(0.0, 0.0,
-                    60.0, 0.0,
-                    30.0, 60.0);
-
-            fig.setFill(Color.BLUE);
-
-            fig.setRotate((90*belt.getHeading().ordinal())%360);
-            this.getChildren().add(fig);
-        }
-    }
 
     @Override
     public void updateView(Subject subject) {
         if (subject == this.space) {
-            updateBelt();
+            this.getChildren().clear();
             updatePlayer();
-            UpdateWalls();
-
         }
+        UpdateWalls();
+        updateBelt();
+
     }
+
+
 }

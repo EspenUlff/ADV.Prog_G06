@@ -24,6 +24,8 @@ package dk.dtu.compute.se.pisd.roborally.model;
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 import dk.dtu.compute.se.pisd.roborally.controller.ConveyorBelt;
 import dk.dtu.compute.se.pisd.roborally.controller.FieldAction;
+import dk.dtu.compute.se.pisd.roborally.controller.GameController;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,17 +74,41 @@ public class Space extends Subject {
             notifyChange();
         }
     }
-    // TODO FIX THIS METHOD CHRIS  - conveyor
-    public ConveyorBelt insertConveyerbelt(){
-        ConveyorBelt CB = null;
+    /** manually added conveyor belt  */
+    public Heading conveyorBelt(@NotNull Space space){
+        // cb 23=north,cb 24=north,cb 25=north,cb 26=north,
+        Space space_cb23 = new Space(board,2,3);
+        Space space_cb24 = new Space(board,2,4);
+        Space space_cb25 = new Space(board,2,5);
+        Space space_cb26 = new Space(board,2,6);
 
-        for (FieldAction action : actions) {
-            if (action instanceof ConveyorBelt && CB == null) {
-                CB = (ConveyorBelt) action;
-            }
+        if(toStringcheck(space,space_cb23)){
+            return Heading.NORTH;
         }
-        return CB;
+        if(toStringcheck(space,space_cb24)){
+            return Heading.NORTH;
+        }
+        if(toStringcheck(space,space_cb25)){
+            return Heading.NORTH;
+        }
+        if(toStringcheck(space,space_cb26)){
+            return Heading.NORTH;
+        }
+        return null;
     }
+
+    private String toString(@NotNull Space space) {
+        return  space.x+" "+space.y;
+    }
+    private boolean toStringcheck(@NotNull Space space1,@NotNull Space space2) {
+
+        String space11 = toString(space1);
+        String space22 = toString(space2);
+        if(space11.equals(space22)) {
+            return true;
+        } else { return false; }
+    }
+    /** manually added conveyor belt . end  */
 
 
     public List<Heading> getWalls() {

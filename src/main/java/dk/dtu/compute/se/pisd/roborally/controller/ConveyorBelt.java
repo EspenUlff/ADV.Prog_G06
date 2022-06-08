@@ -48,12 +48,11 @@ public class ConveyorBelt extends FieldAction {
     @Override
     public boolean doAction(@NotNull GameController gameController, @NotNull Space space) {
 // TODO FIX THIS METHOD CHRIS - conveyor
+        Heading playerHeading = space.getPlayer().getHeading();
+        space.getPlayer().setHeading(heading);
+
         gameController.moveForward(space.getPlayer());
-
-
-        Heading PlayerHeadstowards = space.getPlayer().getHeading();
-
-        //doesnt work, but first we have to get them on the board.
+        space.board.getNeighbour(space, heading).getPlayer().setHeading(playerHeading);
 
         return true;
 

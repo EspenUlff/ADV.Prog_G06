@@ -34,7 +34,7 @@ import java.util.WeakHashMap;
  * @author Ekkart Kindler, ekki@dtu.dk
  *
  */
-public abstract class Subject {
+public abstract class Subject  {
 	
 	private Set<Observer> observers =
 			Collections.newSetFromMap(new WeakHashMap<>());

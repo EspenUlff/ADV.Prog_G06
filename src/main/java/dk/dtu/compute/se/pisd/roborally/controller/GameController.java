@@ -21,6 +21,7 @@
  */
 package dk.dtu.compute.se.pisd.roborally.controller;
 
+
 import dk.dtu.compute.se.pisd.roborally.model.*;
 import org.jetbrains.annotations.NotNull;
 
@@ -30,7 +31,7 @@ import org.jetbrains.annotations.NotNull;
  * @author Ekkart Kindler, ekki@dtu.dk
  *
  */
-public class GameController {
+public class GameController  {
 
     final public Board board;
 
@@ -248,35 +249,89 @@ public class GameController {
     public void moveForward(@NotNull Player player) {
         Space space = player.getSpace();
 
-
         if (player != null && player.board == board && space != null) {
             Heading heading = player.getHeading();
             Space target = board.getNeighbour(space, heading);
+
             if (target != null) {
                 // XXX note that this removes an other player from the space, when there
                 //     is another player on the target. Eventually, this needs to be
                 //     implemented in a way so that other players are pushed away!
-/**
-                if (target.getPlayer() == null){
-                    target.setPlayer(player);
-                    System.out.println("there was no player on the spot");
-                }
-                if (target.getPlayer() != null){
-                    Player targetplayer = target.getPlayer();
-                    moveForward(targetplayer);
+                // -- this should be fixed now by pushing the player towards the space they are 'heading'
 
-                    target.setPlayer(player);
-                    System.out.println("this happened, THERE WAS A PLAYER ON THE SPOT");
-                } */
                 if(target.getPlayer() != null){
                     Player targetplayer = target.getPlayer();
                     moveForward(targetplayer);
                 }
                 target.setPlayer(player);
+
+
                 // dont know what happens with obstacles
+                while(checkConveyerbelt(player.getSpace())) { //checks if there is a conveyorbelt
+                    conveyor(player, player.getSpace());
+
+
+                }
             }
         }
     }
+    /** manually added conveyor belt  */
+    public boolean checkConveyerbelt(@NotNull Space space){
+        Space space_23 = new Space(board,2,3);
+        Space space_24 = new Space(board,2,4);
+        Space space_25 = new Space(board,2,5);
+        Space space_26 = new Space(board,2,6);
+
+        if(toStringcheck(space,space_23)){
+            return true;
+        }
+        if(toStringcheck(space,space_24)){
+            return true;
+        }
+        if(toStringcheck(space,space_25)){
+            return true;
+        }
+        if(toStringcheck(space,space_26)){
+            return true;
+        }
+        return false;
+    }
+
+    private String toString(@NotNull Space space) {
+        return  space.x+" "+space.y;
+    }
+    private boolean toStringcheck(@NotNull Space space1,@NotNull Space space2) {
+        String space11 = toString(space1);
+        String space22 = toString(space2);
+        if(space11.equals(space22)) {
+            return true;
+        } else { return false; }
+    }
+
+    public void conveyor (@NotNull Player player, @NotNull Space space){
+        Space player_space = player.getSpace();
+        if(checkConveyerbelt(player_space) == true){
+            Heading BELT = space.conveyorBelt(player_space);
+            Heading player_heading = player.getHeading();
+            player.setHeading(BELT);
+
+            if (player != null && player.board == board && space != null) {
+                Heading heading = player.getHeading();
+                Space target = board.getNeighbour(space, heading);
+
+                if (target != null) {
+                    if (target.getPlayer() != null) {
+                        Player targetplayer = target.getPlayer();
+                        moveForward(targetplayer);
+                    }
+                    target.setPlayer(player);       // using forward method here caused problems so, its copied.
+                }
+                player.setHeading(player_heading); //puts player heading back to were it was
+            }
+        }
+    }
+    /** manually added conveyor belt . end  */
+
     public void turnaround(@NotNull Player player){
         if (player != null && player.board == board) {
             player.setHeading(player.getHeading().next());
