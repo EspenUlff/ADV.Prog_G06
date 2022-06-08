@@ -42,8 +42,10 @@ public class Player extends Subject {
     private String name;
     private String color;
 
+
     private Space space;
     private Heading heading = SOUTH;
+    private int prog = 0;
 
     private CommandCardField[] program;
     private CommandCardField[] cards;
@@ -52,6 +54,7 @@ public class Player extends Subject {
         this.board = board;
         this.name = name;
         this.color = color;
+
 
         this.space = null;
 
@@ -123,6 +126,12 @@ public class Player extends Subject {
                 space.playerChanged();
             }
         }
+    }
+
+    public int getProgress() {return prog;}
+
+    public void setProgress(@NotNull int value) {
+        this.prog = value;
     }
 
     public CommandCardField getProgramField(int i) {
