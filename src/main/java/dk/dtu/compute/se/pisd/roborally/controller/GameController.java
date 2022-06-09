@@ -22,8 +22,11 @@
 package dk.dtu.compute.se.pisd.roborally.controller;
 
 
+import dk.dtu.compute.se.pisd.roborally.RoboRally;
 import dk.dtu.compute.se.pisd.roborally.model.*;
 import org.jetbrains.annotations.NotNull;
+
+import static java.lang.System.exit;
 
 /**
  * ...
@@ -377,19 +380,40 @@ public class GameController  {
         }
     }
 
+    public boolean checkCheckpoint(@NotNull Space space){
+        Space space_66 = new Space(board,6,6);
+        Space space_15 = new Space(board,1,5);
+        Space space_50 = new Space(board,5,0);
+        Space space_43 = new Space(board,4,3);
+
+        if(toStringcheck(space,space_66)){
+            return true;
+        }
+        if(toStringcheck(space,space_15)){
+            return true;
+        }
+        if(toStringcheck(space,space_50)){
+            return true;
+        }
+        if(toStringcheck(space,space_43)){
+            return true;
+        }
+        return false;
+    }
+    // TODO Not working properly - Jacob
     public void Scoring(@NotNull Player player, @NotNull Space space) {
-        space = player.getSpace();
-        // TODO Fix space til at være checkpoint og ikke notnull og fix value til at være checkpoint value.
-        if (player != null && player.board == board && space != null) {
-            int value;
-            value = 0;
-            player.setProgress(value);
+        Space player_space = player.getSpace();
+
+        if (checkCheckpoint(player_space)) {
+            int value = space.checkpoint(player_space);
+
+            if (player.getProgress() == value - 1) {
+                player.setProgress(value);
+            }
         }
         // TODO Lave en måde at gå tilbage til menuen - Jacob
         if (player.getProgress() == 4) {
-            // "player blah wins"
-            // "Start a new game?"
-            // mulighed for at sige ja til at starte et nyt spil eller lukke appen.
+            //Something something
         }
     }
 

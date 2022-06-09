@@ -22,27 +22,19 @@
 package dk.dtu.compute.se.pisd.roborally.view;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
-import dk.dtu.compute.se.pisd.roborally.controller.Checkpoint;
 import dk.dtu.compute.se.pisd.roborally.controller.ConveyorBelt;
-import dk.dtu.compute.se.pisd.roborally.model.Heading;
+import dk.dtu.compute.se.pisd.roborally.model.Checkpoint;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Line;
 import javafx.scene.shape.Polygon;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.StrokeLineCap;
 import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import org.jetbrains.annotations.NotNull;
-
-import java.awt.*;
 
 /**
  * ...
@@ -254,10 +246,8 @@ public class SpaceView extends StackPane implements ViewObserver {
     }
     private void updateCP() {
 
-        // TODO FIX tallet til at blive set - Jacob
+
         if (space.x == 6 && space.y == 6) {
-            //Checkpoint CP1;
-            //CP1.setValue(1);
             this.setStyle("-fx-background-color: Orange");
             Label cp1 = new Label("1");
             cp1.setFont(Font.font("Tahoma",40));
@@ -265,8 +255,6 @@ public class SpaceView extends StackPane implements ViewObserver {
             this.getChildren().add(cp1);
         }
         if (space.x == 1 && space.y == 5) {
-            //Checkpoint CP2 = space.insertCheckpoint();
-            //CP2.setValue(2);
             this.setStyle("-fx-background-color: Orange");
             Label cp2 = new Label("2");
             cp2.setFont(Font.font("Tahoma",40));
@@ -274,8 +262,6 @@ public class SpaceView extends StackPane implements ViewObserver {
             this.getChildren().add(cp2);
         }
         if (space.x == 5 && space.y == 0) {
-            //Checkpoint CP3 = space.insertCheckpoint();
-            //CP3.setValue(3);
             this.setStyle("-fx-background-color: Orange");
             Label cp3 = new Label("3");
             cp3.setFont(Font.font("Tahoma",40));
@@ -283,8 +269,6 @@ public class SpaceView extends StackPane implements ViewObserver {
             this.getChildren().add(cp3);
         }
         if (space.x == 4 && space.y == 3) {
-            //Checkpoint CP4 = space.insertCheckpoint();
-            //CP4.setValue(4);
             this.setStyle("-fx-background-color: Orange");
             Label cp4 = new Label("4");
             cp4.setFont(Font.font("Tahoma",40));

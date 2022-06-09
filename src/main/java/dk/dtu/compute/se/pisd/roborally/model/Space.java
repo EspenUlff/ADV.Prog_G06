@@ -118,7 +118,7 @@ public class Space extends Subject {
     private String toString(@NotNull Space space) {
         return  space.x+" "+space.y;
     }
-    private boolean toStringcheck(@NotNull Space space1,@NotNull Space space2) {
+    private boolean toStringcheck(@NotNull Space space1, @NotNull Space space2) {
 
         String space11 = toString(space1);
         String space22 = toString(space2);
@@ -128,16 +128,26 @@ public class Space extends Subject {
     }
     /** manually added conveyor belt . end  */
 
-    // TODO lave metode for CP - Jacob
-    public Checkpoint insertCheckpoint(){
-        Checkpoint CP = null;
+    // TODO This is wrong need to fix it - Jacob
+    /** Attempt at manually adding checkpoints  */
+    public int checkpoint(@NotNull Space space) {
+        Space space_CP1 = new Space(board,6,6);
+        Space space_CP2 = new Space(board,1,5);
+        Space space_CP3 = new Space(board,5,0);
+        Space space_CP4 = new Space(board,4,3);
 
-        for (FieldAction action : actions) {
-            if (action instanceof Checkpoint && CP == null) {
-                CP = (Checkpoint) action;
-            }
+        if(toStringcheck(space,space_CP1)){
+            return 1;
         }
-        return CP;
+        if(toStringcheck(space,space_CP2)){
+            return 2;
+        }
+        if(toStringcheck(space,space_CP3)){
+            return 3;
+        }
+        if(toStringcheck(space,space_CP4)){
+            return 4;
+        } else {return 0;}
     }
 
 
