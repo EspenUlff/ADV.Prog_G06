@@ -185,7 +185,7 @@ public class SpaceView extends StackPane implements ViewObserver {
             Canvas canvas = new Canvas(SPACE_WIDTH, SPACE_HEIGHT);
             GraphicsContext gc = canvas.getGraphicsContext2D();
             gc.setStroke(Color.GREEN);
-            gc.setLineWidth(6);
+            gc.setLineWidth(10);
             gc.setLineCap(StrokeLineCap.ROUND);
             //vertical left side line//
             gc.strokeLine(2, SPACE_HEIGHT - 400, SPACE_WIDTH - 58, SPACE_HEIGHT );
@@ -195,7 +195,7 @@ public class SpaceView extends StackPane implements ViewObserver {
             Canvas canvas = new Canvas(SPACE_WIDTH, SPACE_HEIGHT);
             GraphicsContext gc = canvas.getGraphicsContext2D();
             gc.setStroke(Color.GREEN);
-            gc.setLineWidth(6);
+            gc.setLineWidth(10);
             gc.setLineCap(StrokeLineCap.ROUND);
             //vertical left side line//
             gc.strokeLine(2, SPACE_HEIGHT - 400, SPACE_WIDTH - 58, SPACE_HEIGHT );
@@ -205,7 +205,7 @@ public class SpaceView extends StackPane implements ViewObserver {
             Canvas canvas = new Canvas(SPACE_WIDTH, SPACE_HEIGHT);
             GraphicsContext gc = canvas.getGraphicsContext2D();
             gc.setStroke(Color.GREEN);
-            gc.setLineWidth(6);
+            gc.setLineWidth(10);
             gc.setLineCap(StrokeLineCap.ROUND);
             //horizontal buttom side line//
             gc.strokeLine(2, SPACE_HEIGHT - 2, SPACE_WIDTH - 2, SPACE_HEIGHT - 2);
@@ -215,7 +215,7 @@ public class SpaceView extends StackPane implements ViewObserver {
             Canvas canvas = new Canvas(SPACE_WIDTH, SPACE_HEIGHT);
             GraphicsContext gc = canvas.getGraphicsContext2D();
             gc.setStroke(Color.GREEN);
-            gc.setLineWidth(6);
+            gc.setLineWidth(10);
             gc.setLineCap(StrokeLineCap.ROUND);
             //vertical left side line//
             gc.strokeLine(2, SPACE_HEIGHT - 400, SPACE_WIDTH - 58, SPACE_HEIGHT );
@@ -225,7 +225,7 @@ public class SpaceView extends StackPane implements ViewObserver {
             Canvas canvas = new Canvas(SPACE_WIDTH, SPACE_HEIGHT);
             GraphicsContext gc = canvas.getGraphicsContext2D();
             gc.setStroke(Color.GREEN);
-            gc.setLineWidth(6);
+            gc.setLineWidth(10);
             gc.setLineCap(StrokeLineCap.ROUND);
             //vertical left side line//
             gc.strokeLine(2, SPACE_HEIGHT - 400, SPACE_WIDTH - 58, SPACE_HEIGHT );
@@ -235,7 +235,7 @@ public class SpaceView extends StackPane implements ViewObserver {
             Canvas canvas = new Canvas(SPACE_WIDTH, SPACE_HEIGHT);
             GraphicsContext gc = canvas.getGraphicsContext2D();
             gc.setStroke(Color.GREEN);
-            gc.setLineWidth(6);
+            gc.setLineWidth(10);
             gc.setLineCap(StrokeLineCap.ROUND);
             //vertical left side line//
             gc.strokeLine(2, SPACE_HEIGHT - 400, SPACE_WIDTH - 58, SPACE_HEIGHT );
@@ -245,7 +245,7 @@ public class SpaceView extends StackPane implements ViewObserver {
             Canvas canvas = new Canvas(SPACE_WIDTH, SPACE_HEIGHT);
             GraphicsContext gc = canvas.getGraphicsContext2D();
             gc.setStroke(Color.GREEN);
-            gc.setLineWidth(6);
+            gc.setLineWidth(10);
             gc.setLineCap(StrokeLineCap.ROUND);
             //vertical left side line//
             gc.strokeLine(2, SPACE_HEIGHT - 400, SPACE_WIDTH - 58, SPACE_HEIGHT );
@@ -255,7 +255,7 @@ public class SpaceView extends StackPane implements ViewObserver {
             Canvas canvas = new Canvas(SPACE_WIDTH, SPACE_HEIGHT);
             GraphicsContext gc = canvas.getGraphicsContext2D();
             gc.setStroke(Color.GREEN);
-            gc.setLineWidth(6);
+            gc.setLineWidth(10);
             gc.setLineCap(StrokeLineCap.ROUND);
             //horizontal buttom side line//
             gc.strokeLine(2, SPACE_HEIGHT - 2, SPACE_WIDTH - 2, SPACE_HEIGHT-2 );
@@ -265,7 +265,7 @@ public class SpaceView extends StackPane implements ViewObserver {
             Canvas canvas = new Canvas(SPACE_WIDTH, SPACE_HEIGHT);
             GraphicsContext gc = canvas.getGraphicsContext2D();
             gc.setStroke(Color.GREEN);
-            gc.setLineWidth(6);
+            gc.setLineWidth(10);
             gc.setLineCap(StrokeLineCap.ROUND);
             //horizontal buttom side line//
             gc.strokeLine(2, SPACE_HEIGHT - 2, SPACE_WIDTH - 2, SPACE_HEIGHT-2 );
@@ -275,7 +275,7 @@ public class SpaceView extends StackPane implements ViewObserver {
             Canvas canvas = new Canvas(SPACE_WIDTH, SPACE_HEIGHT);
             GraphicsContext gc = canvas.getGraphicsContext2D();
             gc.setStroke(Color.GREEN);
-            gc.setLineWidth(6);
+            gc.setLineWidth(10);
             gc.setLineCap(StrokeLineCap.ROUND);
             //horizontal buttom side line//
             gc.strokeLine(2, SPACE_HEIGHT - 2, SPACE_WIDTH - 2, SPACE_HEIGHT-2 );
@@ -285,7 +285,7 @@ public class SpaceView extends StackPane implements ViewObserver {
             Canvas canvas = new Canvas(SPACE_WIDTH, SPACE_HEIGHT);
             GraphicsContext gc = canvas.getGraphicsContext2D();
             gc.setStroke(Color.GREEN);
-            gc.setLineWidth(6);
+            gc.setLineWidth(10);
             gc.setLineCap(StrokeLineCap.ROUND);
             //horizontal buttom side line//
             gc.strokeLine(2, SPACE_HEIGHT - 2, SPACE_WIDTH - 2, SPACE_HEIGHT-2 );
@@ -295,7 +295,7 @@ public class SpaceView extends StackPane implements ViewObserver {
             Canvas canvas = new Canvas(SPACE_WIDTH, SPACE_HEIGHT);
             GraphicsContext gc = canvas.getGraphicsContext2D();
             gc.setStroke(Color.GREEN);
-            gc.setLineWidth(6);
+            gc.setLineWidth(10);
             gc.setLineCap(StrokeLineCap.ROUND);
             //horizontal buttom side line//
             gc.strokeLine(2, SPACE_HEIGHT - 2, SPACE_WIDTH - 2, SPACE_HEIGHT-2 );
@@ -305,7 +305,7 @@ public class SpaceView extends StackPane implements ViewObserver {
             Canvas canvas = new Canvas(SPACE_WIDTH, SPACE_HEIGHT);
             GraphicsContext gc = canvas.getGraphicsContext2D();
             gc.setStroke(Color.GREEN);
-            gc.setLineWidth(6);
+            gc.setLineWidth(10);
             gc.setLineCap(StrokeLineCap.ROUND);
             //horizontal buttom side line//
             gc.strokeLine(2, SPACE_HEIGHT - 2, SPACE_WIDTH - 2, SPACE_HEIGHT-2 );

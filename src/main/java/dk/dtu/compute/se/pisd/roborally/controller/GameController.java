@@ -262,6 +262,12 @@ public class GameController  {
                 //     implemented in a way so that other players are pushed away!
                 // -- this should be fixed now by pushing the player towards the space they are 'heading'
 
+                // kald på metode her - Tobias
+                if(space.BlockedWalls(player)) {
+                    return;
+                }
+
+
                 if(target.getPlayer() != null){
                     Player targetplayer = target.getPlayer();
                     moveForward(targetplayer);
@@ -278,6 +284,14 @@ public class GameController  {
             }
         }
     }
+    public boolean checkblockedwalls(@NotNull Space wall) {
+        Space wall_40 = new Space(board, 4, 0);
+        if (toStringcheck(wall, wall_40)) {
+            return true;
+        }
+        return false;
+    }
+
     /** manually added conveyor belt  */
     public boolean checkConveyerbelt(@NotNull Space space){
         // 17-east,27-east,37-east,47-east,57-east,67-north
