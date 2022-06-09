@@ -45,7 +45,7 @@ public class Player extends Subject {
 
     private Space space;
     private Heading heading = SOUTH;
-    private int prog = 0;
+    private int progress = 0;
 
     private CommandCardField[] program;
     private CommandCardField[] cards;
@@ -128,10 +128,10 @@ public class Player extends Subject {
         }
     }
 
-    public int getProgress() {return prog;}
+    public int getProgress() {return progress;}
 
     public void setProgress(@NotNull int value) {
-        this.prog = value;
+        this.progress = value;
     }
 
     public CommandCardField getProgramField(int i) {
