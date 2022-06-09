@@ -84,39 +84,107 @@ public class SpaceView extends StackPane implements ViewObserver {
     }
     // TODO FIX THIS METHOD CHRIS  - conveyor
     private void updateBelt() {
-
-        if (space.x == 2 && space.y == 3) {
-            Polygon fig = new Polygon(0.0, 5.0,
-                    55.0, 5.0,
-                    30.0, 55.0);
-            fig.setFill(Color.YELLOW);
-            fig.setRotate(180);
+        // 17-east,27-east,37-east,47-east,57-east,67-north
+        // 32-west,42-west,52-west,53-north,54-north
+        // 01-south,02-south,03-east,13-south,14-east,24-south,25-east
+        if (space.x == 1 && space.y == 7) {
+            Polygon fig = Conveyorfigure("EAST");
+            this.getChildren().add(fig);
+        }
+        if (space.x == 2 && space.y == 7) {
+            Polygon fig = Conveyorfigure("EAST");
+            this.getChildren().add(fig);
+        }
+        if (space.x == 3 && space.y == 7) {
+            Polygon fig = Conveyorfigure("EAST");
+            this.getChildren().add(fig);
+        }
+        if (space.x == 4 && space.y == 7) {
+            Polygon fig = Conveyorfigure("EAST");
+            this.getChildren().add(fig);
+        }
+        if (space.x == 5 && space.y == 7) {
+            Polygon fig = Conveyorfigure("EAST");
+            this.getChildren().add(fig);
+        }
+        if (space.x == 6 && space.y == 7) {
+            Polygon fig = Conveyorfigure("NORTH");
+            this.getChildren().add(fig);
+        }
+        //--
+        if (space.x == 3 && space.y == 2) {
+            Polygon fig = Conveyorfigure("WEST");
+            this.getChildren().add(fig);
+        }
+        if (space.x == 4 && space.y == 2) {
+            Polygon fig = Conveyorfigure("WEST");
+            this.getChildren().add(fig);
+        }
+        if (space.x == 5 && space.y == 2) {
+            Polygon fig = Conveyorfigure("WEST");
+            this.getChildren().add(fig);
+        }
+        if (space.x == 5 && space.y == 3) {
+            Polygon fig = Conveyorfigure("NORTH");
+            this.getChildren().add(fig);
+        }
+        if (space.x == 5 && space.y == 4) {
+            Polygon fig = Conveyorfigure("NORTH");
+            this.getChildren().add(fig);
+        }
+        //--
+        if (space.x == 0 && space.y == 1) {
+            Polygon fig = Conveyorfigure("SOUTH");
+            this.getChildren().add(fig);
+        }
+        if (space.x == 0 && space.y == 2) {
+            Polygon fig = Conveyorfigure("SOUTH");
+            this.getChildren().add(fig);
+        }
+        if (space.x == 0 && space.y == 3) {
+            Polygon fig = Conveyorfigure("EAST");
+            this.getChildren().add(fig);
+        }
+        if (space.x == 1 && space.y == 3) {
+            Polygon fig = Conveyorfigure("SOUTH");
+            this.getChildren().add(fig);
+        }
+        if (space.x == 1 && space.y == 4) {
+            Polygon fig = Conveyorfigure("EAST");
             this.getChildren().add(fig);
         }
         if (space.x == 2 && space.y == 4) {
-            Polygon fig = new Polygon(0.0, 5.0,
-                    55.0, 5.0,
-                    30.0, 55.0);
-            fig.setFill(Color.YELLOW);
-            fig.setRotate(180);
+            Polygon fig = Conveyorfigure("SOUTH");
             this.getChildren().add(fig);
         }
         if (space.x == 2 && space.y == 5) {
-            Polygon fig = new Polygon(0.0, 5.0,
-                    55.0, 5.0,
-                    30.0, 55.0);
-            fig.setFill(Color.YELLOW);
-            fig.setRotate(180);
+            Polygon fig = Conveyorfigure("EAST");
             this.getChildren().add(fig);
         }
-        if (space.x == 2 && space.y == 6) {
-            Polygon fig = new Polygon(0.0, 5.0,
-                    55.0, 5.0,
-                    30.0, 55.0);
-            fig.setFill(Color.YELLOW);
+    }
+
+    private Polygon Conveyorfigure(String DIRECTION){
+        Polygon fig = new Polygon(0.0, 5.0,
+                55.0, 5.0,
+                30.0, 55.0);
+        fig.setFill(Color.YELLOW);
+        String north = "NORTH";
+        String east = "EAST";
+        String south = "SOUTH";
+        String west = "WEST";
+        if(DIRECTION.equals(north)){
             fig.setRotate(180);
-            this.getChildren().add(fig);
         }
+        if(DIRECTION.equals(east)){
+            fig.setRotate(270);
+        }
+        if(DIRECTION.equals(south)){
+            fig.setRotate(0);
+        }
+        if(DIRECTION.equals(west)){
+            fig.setRotate(90);
+        }
+        return fig;
     }
 
     // makes walls ! problem with a wall on every row

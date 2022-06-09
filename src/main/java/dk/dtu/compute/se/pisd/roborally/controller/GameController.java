@@ -277,23 +277,39 @@ public class GameController  {
     }
     /** manually added conveyor belt  */
     public boolean checkConveyerbelt(@NotNull Space space){
-        Space space_23 = new Space(board,2,3);
-        Space space_24 = new Space(board,2,4);
-        Space space_25 = new Space(board,2,5);
-        Space space_26 = new Space(board,2,6);
+        // 17-east,27-east,37-east,47-east,57-east,67-north
+        Space space_cb17 = new Space(board,1,7);Space space_cb27 = new Space(board,2,7);
+        Space space_cb37 = new Space(board,3,7);Space space_cb47 = new Space(board,4,7);
+        Space space_cb57 = new Space(board,5,7);Space space_cb67 = new Space(board,6,7);
+        // 32-west,42-west,52-west,53-north,54-north
+        Space space_cb32 = new Space(board,3,2);Space space_cb42 = new Space(board,4,2);
+        Space space_cb52 = new Space(board,5,2);Space space_cb53 = new Space(board,5,3);
+        Space space_cb54 = new Space(board,5,4);
+        // 01-south,02-south,03-east,13-south,14-east,24-south,25-east
+        Space space_cb01 = new Space(board,0,1);Space space_cb02 = new Space(board,0,2);
+        Space space_cb03 = new Space(board,0,3);Space space_cb13 = new Space(board,1,3);
+        Space space_cb14 = new Space(board,1,4);Space space_cb24 = new Space(board,2,4);
+        Space space_cb25 = new Space(board,2,5);
 
-        if(toStringcheck(space,space_23)){
-            return true;
-        }
-        if(toStringcheck(space,space_24)){
-            return true;
-        }
-        if(toStringcheck(space,space_25)){
-            return true;
-        }
-        if(toStringcheck(space,space_26)){
-            return true;
-        }
+        if(toStringcheck(space,space_cb17)){return true;}
+        if(toStringcheck(space,space_cb27)){return true;}
+        if(toStringcheck(space,space_cb37)){return true;}
+        if(toStringcheck(space,space_cb47)){return true;}
+        if(toStringcheck(space,space_cb57)){return true;}
+        if(toStringcheck(space,space_cb67)){return true;}
+        if(toStringcheck(space,space_cb32)){return true;}
+        if(toStringcheck(space,space_cb42)){return true;}
+        if(toStringcheck(space,space_cb52)){return true;}
+        if(toStringcheck(space,space_cb53)){return true;}
+        if(toStringcheck(space,space_cb54)){return true;}
+        if(toStringcheck(space,space_cb01)){return true;}
+        if(toStringcheck(space,space_cb02)){return true;}
+        if(toStringcheck(space,space_cb03)){return true;}
+        if(toStringcheck(space,space_cb13)){return true;}
+        if(toStringcheck(space,space_cb14)){return true;}
+        if(toStringcheck(space,space_cb24)){return true;}
+        if(toStringcheck(space,space_cb25)){return true;}
+
         return false;
     }
 

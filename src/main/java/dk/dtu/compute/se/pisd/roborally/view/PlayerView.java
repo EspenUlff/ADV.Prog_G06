@@ -197,10 +197,8 @@ public class PlayerView extends Tab implements ViewObserver {
 
 
             }
-            // added by chvi - this adds the option to choose between the different commands which a command card can have.
+            //this adds the option to choose between the different commands which a command card can have.
             else {
-
-
                 if (!programPane.getChildren().contains(playerInteractionPanel)) {
                     programPane.getChildren().remove(buttonPanel);
                     programPane.add(playerInteractionPanel, Player.NO_REGISTERS, 0);
