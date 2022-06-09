@@ -22,7 +22,7 @@
 package dk.dtu.compute.se.pisd.roborally.model;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
-//import dk.dtu.compute.se.pisd.roborally.controller.Checkpoint;
+import dk.dtu.compute.se.pisd.roborally.controller.Checkpoint;
 import dk.dtu.compute.se.pisd.roborally.controller.ConveyorBelt;
 import dk.dtu.compute.se.pisd.roborally.controller.FieldAction;
 import org.jetbrains.annotations.NotNull;
@@ -149,7 +149,75 @@ public class Space extends Subject {
             return 4;
         } else {return 0;}
     }
+    /** Attempt at manually adding BlockedWalls */
+    public Boolean BlockedWalls(@NotNull Player player) {
+        Space player_space = player.getSpace();
+        Heading player_heading = player.getHeading();
 
+        Space wall_40 = new Space(board, 4, 0); Space wall_30 = new Space(board, 3, 0);
+        Space wall_41 = new Space(board, 4, 1); Space wall_31 = new Space(board, 3, 1);
+        Space wall_51 = new Space(board, 5, 1);
+        Space wall_62 = new Space(board, 6, 2);
+        Space wall_63 = new Space(board, 6, 3);
+        Space wall_65 = new Space(board, 6, 5); Space wall_55 = new Space(board, 5, 5);
+        Space wall_66 = new Space(board, 6, 6); Space wall_56 = new Space(board, 5, 6); // two different headings
+        Space wall_46 = new Space(board, 4, 6);
+        Space wall_36 = new Space(board, 3, 6);
+        Space wall_26 = new Space(board, 2, 6);
+        Space wall_16 = new Space(board, 1, 6); Space wall_15 = new Space(board, 1, 5);
+
+        if (toStringcheck(player_space, wall_40)) {
+            if (player_heading == Heading.WEST) {return true;}
+        }
+        if (toStringcheck(player_space, wall_30)) {
+            if (player_heading == Heading.EAST) {return true;}
+        }
+        if (toStringcheck(player_space, wall_41)) {
+            if (player_heading == Heading.WEST) {return true;}
+        }
+        if (toStringcheck(player_space, wall_31)) {
+            if (player_heading == Heading.EAST) {return true;}
+        }
+        if (toStringcheck(player_space, wall_51)) {
+            if (player_heading == Heading.SOUTH) {return true;}
+        }
+        if (toStringcheck(player_space, wall_62)) {
+            if (player_heading == Heading.WEST) {return true;}
+        }
+        if (toStringcheck(player_space, wall_63)) {
+            if (player_heading == Heading.WEST) {return true;}
+        }
+        if (toStringcheck(player_space, wall_65)) {
+            if (player_heading == Heading.WEST) {return true;}
+        }
+        if (toStringcheck(player_space, wall_55)) {
+            if (player_heading == Heading.EAST) {return true;}
+        }
+        if (toStringcheck(player_space, wall_66)) {
+            if (player_heading == Heading.WEST) {return true;}
+        }
+        if (toStringcheck(player_space, wall_56)) {
+            if (player_heading == Heading.EAST ) {return true;}
+            if (player_heading == Heading.SOUTH) {return true;}
+        }
+        if (toStringcheck(player_space, wall_46)) {
+            if (player_heading == Heading.SOUTH) {return true;}
+        }
+        if (toStringcheck(player_space, wall_36)) {
+            if (player_heading == Heading.SOUTH) { return true;}
+        }
+        if (toStringcheck(player_space, wall_26)) {
+            if (player_heading == Heading.SOUTH) { return true;}
+        }
+        if (toStringcheck(player_space, wall_16)) {
+            if (player_heading == Heading.SOUTH) {return true;}
+            if (player_heading == Heading.NORTH) {return true;}
+        }
+        if (toStringcheck(player_space, wall_15)) {
+            if (player_heading == Heading.SOUTH) {return true;}
+        }
+        return false;
+    }
 
     public List<Heading> getWalls() {
         return walls;
