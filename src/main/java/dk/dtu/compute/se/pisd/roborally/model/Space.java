@@ -152,7 +152,6 @@ public class Space extends Subject {
     public Boolean BlockedWalls(@NotNull Player player) {
         Space player_space = player.getSpace();
         Heading player_heading = player.getHeading();
-
         Space wall_40 = new Space(board, 4, 0); Space wall_30 = new Space(board, 3, 0);
         Space wall_41 = new Space(board, 4, 1); Space wall_31 = new Space(board, 3, 1);
         Space wall_51 = new Space(board, 5, 1);
@@ -163,7 +162,7 @@ public class Space extends Subject {
         Space wall_46 = new Space(board, 4, 6);
         Space wall_36 = new Space(board, 3, 6);
         Space wall_26 = new Space(board, 2, 6);
-        Space wall_16 = new Space(board, 1, 6); Space wall_15 = new Space(board, 1, 5);
+        Space wall_16 = new Space(board, 1, 6); Space wall_15 = new Space(board, 1, 5); // two different headings
 
         if (toStringcheck(player_space, wall_40)) {
             if (player_heading == Heading.WEST) {return true;}
