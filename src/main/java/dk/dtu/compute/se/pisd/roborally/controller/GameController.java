@@ -262,15 +262,21 @@ public class GameController  {
                 //     implemented in a way so that other players are pushed away!
                 // -- this should be fixed now by pushing the player towards the space they are 'heading'
 
-                // kald på metode her - Tobias
                 if(space.BlockedWalls(player)) {
                     return;
                 }
-
-
                 if(target.getPlayer() != null){
                     Player targetplayer = target.getPlayer();
                     Heading targetplayer_head = targetplayer.getHeading();
+                    if(space.BlockedWalls(targetplayer)) {
+                        return;
+                    }
+                    targetplayer.setHeading(heading);
+                    if(space.BlockedWalls(targetplayer)) {
+                        targetplayer.setHeading(targetplayer_head);
+                        return;
+                    }
+                    targetplayer.setHeading(targetplayer_head);
                     if(checkheadingtowardseachother(player,targetplayer) == true){
                         targetplayer.setHeading(heading);
                         moveForward(targetplayer);
@@ -281,13 +287,19 @@ public class GameController  {
                             conveyor(targetplayer, targetplayer.getSpace());
                         }
                     }
-                    else { moveForward(targetplayer);
+                    else {
+                        targetplayer.setHeading(heading);
+                        moveForward(targetplayer);
+                        targetplayer.setHeading(targetplayer_head);
                     }
                 }
-                target.setPlayer(player);
+                if(target.getPlayer()== null) {
+                    target.setPlayer(player);
+                } else {
+                    return;
+                }
 
 
-                // dont know what happens with obstacles
                 while(checkConveyerbelt(player.getSpace())) { //checks if there is a conveyorbelt
                     conveyor(player, player.getSpace());
 
@@ -389,14 +401,27 @@ public class GameController  {
                     if(target.getPlayer() != null){
                         Player targetplayer = target.getPlayer();
                         Heading targetplayer_head = targetplayer.getHeading();
+//                        if(checkheadingtowardseachother(player,targetplayer) == true){
+//                            targetplayer.setHeading(heading);
+//                            moveForward(targetplayer);
+//                            targetplayer.setHeading(targetplayer_head);
+//                            target.setPlayer(player);
+//                            space.setPlayer(targetplayer);
+//                        }
+
                         if(checkheadingtowardseachother(player,targetplayer) == true){
-                            targetplayer.setHeading(heading);
+                            turnaround(targetplayer);
                             moveForward(targetplayer);
-                            targetplayer.setHeading(targetplayer_head);
-                            target.setPlayer(player);
-                            space.setPlayer(targetplayer);
-                        }
-                        else { moveForward(targetplayer);
+                            turnaround(targetplayer);
+//
+//                            targetplayer.setHeading();
+//                            moveForward(targetplayer);
+//                            targetplayer.setHeading(targetplayer_head);
+//                            target.setPlayer(player);
+//                            space.setPlayer(targetplayer);
+
+
+                        } else { moveForward(targetplayer);
                         }
                     }
                     target.setPlayer(player);       // using forward method here caused problems so, its copied.
