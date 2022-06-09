@@ -30,6 +30,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -53,6 +54,7 @@ public class PlayerView extends Tab implements ViewObserver {
     private GridPane programPane;
     private Label cardsLabel;
     private GridPane cardsPane;
+    private Text score;
 
     private CardFieldView[] programCardViews;
     private CardFieldView[] cardViews;
@@ -126,10 +128,13 @@ public class PlayerView extends Tab implements ViewObserver {
             }
         }
 
+        score = new Text(("Checkpoints reached: " + player.getProgress()));
+
         top.getChildren().add(programLabel);
         top.getChildren().add(programPane);
         top.getChildren().add(cardsLabel);
         top.getChildren().add(cardsPane);
+        top.getChildren().add(score);
 
         if (player.board != null) {
             player.board.attach(this);
