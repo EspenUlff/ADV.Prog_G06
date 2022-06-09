@@ -179,19 +179,9 @@ public class SpaceView extends StackPane implements ViewObserver {
         return fig;
     }
 
-    // makes walls ! problem with a wall on every row
+    // makes walls using javaFX and the strokeline method.
     private void UpdateWalls() {
-        if (space.x == 2 && space.y == 5) {
-            Canvas canvas = new Canvas(SPACE_WIDTH, SPACE_HEIGHT);
-            GraphicsContext gc = canvas.getGraphicsContext2D();
-            gc.setStroke(Color.GREEN);
-            gc.setLineWidth(6);
-            gc.setLineCap(StrokeLineCap.ROUND);
-            //horizontal line//
-            gc.strokeLine(2, SPACE_HEIGHT - 2, SPACE_WIDTH - 2, SPACE_HEIGHT - 2);
-            this.getChildren().add(canvas);
-        }
-        if (space.x == 2 && space.y == 5) {
+        if (space.x == 4 && space.y == 0) {
             Canvas canvas = new Canvas(SPACE_WIDTH, SPACE_HEIGHT);
             GraphicsContext gc = canvas.getGraphicsContext2D();
             gc.setStroke(Color.GREEN);
@@ -201,28 +191,126 @@ public class SpaceView extends StackPane implements ViewObserver {
             gc.strokeLine(2, SPACE_HEIGHT - 400, SPACE_WIDTH - 58, SPACE_HEIGHT );
             this.getChildren().add(canvas);
         }
-        if (space.x == 3 && space.y == 5) {
-            Canvas canvas = new Canvas(SPACE_WIDTH, SPACE_HEIGHT);
-            GraphicsContext gc = canvas.getGraphicsContext2D();
-            gc.setStroke(Color.GREEN);
-            gc.setLineWidth(6);
-            gc.setLineCap(StrokeLineCap.ROUND);
-            //horizontal line//
-            gc.strokeLine(2, SPACE_HEIGHT - 2, SPACE_WIDTH - 2, SPACE_HEIGHT-2 );
-            this.getChildren().add(canvas);
-        }
-        if (space.x == 4 && space.y == 5) {
+        if (space.x == 4 && space.y == 1) {
             Canvas canvas = new Canvas(SPACE_WIDTH, SPACE_HEIGHT);
             GraphicsContext gc = canvas.getGraphicsContext2D();
             gc.setStroke(Color.GREEN);
             gc.setLineWidth(6);
             gc.setLineCap(StrokeLineCap.ROUND);
             //vertical left side line//
-            gc.strokeLine(2, SPACE_HEIGHT - 400, SPACE_WIDTH - 58, SPACE_HEIGHT);
+            gc.strokeLine(2, SPACE_HEIGHT - 400, SPACE_WIDTH - 58, SPACE_HEIGHT );
             this.getChildren().add(canvas);
         }
-
-
+        if (space.x == 5 && space.y == 1) {
+            Canvas canvas = new Canvas(SPACE_WIDTH, SPACE_HEIGHT);
+            GraphicsContext gc = canvas.getGraphicsContext2D();
+            gc.setStroke(Color.GREEN);
+            gc.setLineWidth(6);
+            gc.setLineCap(StrokeLineCap.ROUND);
+            //horizontal buttom side line//
+            gc.strokeLine(2, SPACE_HEIGHT - 2, SPACE_WIDTH - 2, SPACE_HEIGHT - 2);
+            this.getChildren().add(canvas);
+        }
+        if (space.x == 6 && space.y == 2) {
+            Canvas canvas = new Canvas(SPACE_WIDTH, SPACE_HEIGHT);
+            GraphicsContext gc = canvas.getGraphicsContext2D();
+            gc.setStroke(Color.GREEN);
+            gc.setLineWidth(6);
+            gc.setLineCap(StrokeLineCap.ROUND);
+            //vertical left side line//
+            gc.strokeLine(2, SPACE_HEIGHT - 400, SPACE_WIDTH - 58, SPACE_HEIGHT );
+            this.getChildren().add(canvas);
+        }
+        if (space.x == 6 && space.y == 3) {
+            Canvas canvas = new Canvas(SPACE_WIDTH, SPACE_HEIGHT);
+            GraphicsContext gc = canvas.getGraphicsContext2D();
+            gc.setStroke(Color.GREEN);
+            gc.setLineWidth(6);
+            gc.setLineCap(StrokeLineCap.ROUND);
+            //vertical left side line//
+            gc.strokeLine(2, SPACE_HEIGHT - 400, SPACE_WIDTH - 58, SPACE_HEIGHT );
+            this.getChildren().add(canvas);
+        }
+        if (space.x == 6 && space.y == 5) {
+            Canvas canvas = new Canvas(SPACE_WIDTH, SPACE_HEIGHT);
+            GraphicsContext gc = canvas.getGraphicsContext2D();
+            gc.setStroke(Color.GREEN);
+            gc.setLineWidth(6);
+            gc.setLineCap(StrokeLineCap.ROUND);
+            //vertical left side line//
+            gc.strokeLine(2, SPACE_HEIGHT - 400, SPACE_WIDTH - 58, SPACE_HEIGHT );
+            this.getChildren().add(canvas);
+        }
+        if (space.x == 6 && space.y == 6) {
+            Canvas canvas = new Canvas(SPACE_WIDTH, SPACE_HEIGHT);
+            GraphicsContext gc = canvas.getGraphicsContext2D();
+            gc.setStroke(Color.GREEN);
+            gc.setLineWidth(6);
+            gc.setLineCap(StrokeLineCap.ROUND);
+            //vertical left side line//
+            gc.strokeLine(2, SPACE_HEIGHT - 400, SPACE_WIDTH - 58, SPACE_HEIGHT );
+            this.getChildren().add(canvas);
+        }
+        if (space.x == 5 && space.y == 6) {
+            Canvas canvas = new Canvas(SPACE_WIDTH, SPACE_HEIGHT);
+            GraphicsContext gc = canvas.getGraphicsContext2D();
+            gc.setStroke(Color.GREEN);
+            gc.setLineWidth(6);
+            gc.setLineCap(StrokeLineCap.ROUND);
+            //horizontal buttom side line//
+            gc.strokeLine(2, SPACE_HEIGHT - 2, SPACE_WIDTH - 2, SPACE_HEIGHT-2 );
+            this.getChildren().add(canvas);
+        }
+        if (space.x == 4 && space.y == 6) {
+            Canvas canvas = new Canvas(SPACE_WIDTH, SPACE_HEIGHT);
+            GraphicsContext gc = canvas.getGraphicsContext2D();
+            gc.setStroke(Color.GREEN);
+            gc.setLineWidth(6);
+            gc.setLineCap(StrokeLineCap.ROUND);
+            //horizontal buttom side line//
+            gc.strokeLine(2, SPACE_HEIGHT - 2, SPACE_WIDTH - 2, SPACE_HEIGHT-2 );
+            this.getChildren().add(canvas);
+        }
+        if (space.x == 3 && space.y == 6) {
+            Canvas canvas = new Canvas(SPACE_WIDTH, SPACE_HEIGHT);
+            GraphicsContext gc = canvas.getGraphicsContext2D();
+            gc.setStroke(Color.GREEN);
+            gc.setLineWidth(6);
+            gc.setLineCap(StrokeLineCap.ROUND);
+            //horizontal buttom side line//
+            gc.strokeLine(2, SPACE_HEIGHT - 2, SPACE_WIDTH - 2, SPACE_HEIGHT-2 );
+            this.getChildren().add(canvas);
+        }
+        if (space.x == 2 && space.y == 6) {
+            Canvas canvas = new Canvas(SPACE_WIDTH, SPACE_HEIGHT);
+            GraphicsContext gc = canvas.getGraphicsContext2D();
+            gc.setStroke(Color.GREEN);
+            gc.setLineWidth(6);
+            gc.setLineCap(StrokeLineCap.ROUND);
+            //horizontal buttom side line//
+            gc.strokeLine(2, SPACE_HEIGHT - 2, SPACE_WIDTH - 2, SPACE_HEIGHT-2 );
+            this.getChildren().add(canvas);
+        }
+        if (space.x == 1 && space.y == 6) {
+            Canvas canvas = new Canvas(SPACE_WIDTH, SPACE_HEIGHT);
+            GraphicsContext gc = canvas.getGraphicsContext2D();
+            gc.setStroke(Color.GREEN);
+            gc.setLineWidth(6);
+            gc.setLineCap(StrokeLineCap.ROUND);
+            //horizontal buttom side line//
+            gc.strokeLine(2, SPACE_HEIGHT - 2, SPACE_WIDTH - 2, SPACE_HEIGHT-2 );
+            this.getChildren().add(canvas);
+        }
+        if (space.x == 1 && space.y == 5) {
+            Canvas canvas = new Canvas(SPACE_WIDTH, SPACE_HEIGHT);
+            GraphicsContext gc = canvas.getGraphicsContext2D();
+            gc.setStroke(Color.GREEN);
+            gc.setLineWidth(6);
+            gc.setLineCap(StrokeLineCap.ROUND);
+            //horizontal buttom side line//
+            gc.strokeLine(2, SPACE_HEIGHT - 2, SPACE_WIDTH - 2, SPACE_HEIGHT-2 );
+            this.getChildren().add(canvas);
+        }
     }
 
     private void updatePlayer() {
