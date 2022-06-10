@@ -311,15 +311,17 @@ public class GameController  {
                 // checks if the current space is a conveyorbelt, continues until it isnt anymore
                 while(checkConveyerbelt(player.getSpace())) {
                     conveyor(player, player.getSpace());
+
+
                 }
 
                 //fixes issue where a player tries to forward into a conveyor
                 if(checkConveyerbelt(target) == true){
                     return;
                 }
+
                 player.setHeading(space.gear(player));
             }
-
         }
     }
 
@@ -431,6 +433,10 @@ public class GameController  {
                             targetplayer.setHeading(BELT);
                             moveForward(targetplayer);
                             targetplayer.setHeading(targetplayer_head);
+                            target.setPlayer(player);
+                            space.setPlayer(targetplayer);
+                        }
+                        else { moveForward(targetplayer);
                         }
                     }
                     target.setPlayer(player);       // using forward method here caused problems so, its copied.
