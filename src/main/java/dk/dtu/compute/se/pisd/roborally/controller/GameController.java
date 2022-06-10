@@ -257,19 +257,21 @@ public class GameController  {
         if (player != null && player.board == board && space != null) {
             Heading heading = player.getHeading();
             Space target = board.getNeighbour(space, heading);
-
+            Space targetoftarget = board.getNeighbour(target,heading);
             if (target != null) {
 
+                //if a player looks at a wall, moveforward stops.
                 if(space.blockedWalls(player)) {
                     return;
                 }
-
-
 
                 if(target.getPlayer() != null){
                     Player targetplayer = target.getPlayer();
                     Heading targetplayer_head = targetplayer.getHeading();
 
+
+
+                    //if player looks towards a wall while targetplayer is up against it, turns head and put it back
                     targetplayer.setHeading(heading);
                     if(space.blockedWalls(targetplayer)) {
                         targetplayer.setHeading(targetplayer_head);
@@ -277,52 +279,78 @@ public class GameController  {
                     }
                     targetplayer.setHeading(targetplayer_head);
 
+                    // if players face eachother
+                    if(checkHeadingTowardsEachOther(player,targetplayer)){
 
-                    if(checkHeadingTowardsEachOther(player,targetplayer) == true){
-                        targetplayer.setHeading(heading);
+                        turnAround(targetplayer);
                         moveForward(targetplayer);
-                        targetplayer.setHeading(targetplayer_head);
-                        target.setPlayer(player);
-                        space.setPlayer(targetplayer);
+                        turnAround(targetplayer);
+
                         while(checkConveyerbelt(targetplayer.getSpace())) { //checks if there is a conveyorbelt
                             conveyor(targetplayer, targetplayer.getSpace());
                         }
                     }
+                    if(checkConveyerbelt(targetoftarget)){
+                        if(space.conveyorBelt(targetoftarget) == Heading.EAST && player.getHeading() == Heading.WEST){
+                            return;
+                        }
+                        if(space.conveyorBelt(targetoftarget) == Heading.SOUTH && player.getHeading() == Heading.NORTH){
+                            return;
+                        }
+                        if(space.conveyorBelt(targetoftarget) == Heading.WEST && player.getHeading() == Heading.EAST){
+                            return;
+                        }
+                        if(space.conveyorBelt(targetoftarget) == Heading.NORTH && player.getHeading() == Heading.SOUTH){
+                            return;
+                        }
+                    }
+                    //moves targetplayer if they are not facing eachother or on a conveyorbelt
                     if((checkHeadingTowardsEachOther(player,targetplayer) || checkConveyerbelt(targetplayer.getSpace()) )== false){
+
+                        targetplayer.setHeading(heading);
                         moveForward(targetplayer);
+                        targetplayer.setHeading(targetplayer_head);
+
+
+                        if(target.getPlayer() == null) {
+                            target.setPlayer(player);
+
+                            Space Gear_Space = new Space(board,4,5);
+                            if(toStringCheck(Gear_Space, player.getSpace())){
+                                turnLeft(player);
+                            }
+                        }
+
                     }
                     Space space_target = targetplayer.getSpace();
                     Space target2 = board.getNeighbour(space_target, targetplayer_head);
-                    if (checkConveyerbelt(target2) == true) {
+                    if (checkConveyerbelt(target2)) {
                         return;
                     }
-//                    if (checkConveyerbelt(targetplayer.getSpace()) == false) {
-//                        moveForward(targetplayer);
-//                        target.setPlayer(player);
-//                        return;
-//                    }
                 }
-//000000
-//                if(target.getPlayer() != null) {
-//                    Player targetplayer = target.getPlayer();
-//
-//                }
-                //move the player to the place its heading
+
+                //moves the player on target space
                 target.setPlayer(player);
+
+                // checks if the space is a gear, and turns head if is.
+                Space Gear_Space = new Space(board,4,5);
+                if(toStringCheck(Gear_Space, player.getSpace())){
+                    turnLeft(player);
+                    //player.setHeading(space.gear(player));
+                }
 
                 // checks if the current space is a conveyorbelt, continues until it isnt anymore
                 while(checkConveyerbelt(player.getSpace())) {
                     conveyor(player, player.getSpace());
-
-
                 }
 
                 //fixes issue where a player tries to forward into a conveyor
-                if(checkConveyerbelt(target) == true){
+
+
+                if(checkConveyerbelt(target)){
                     return;
                 }
 
-                player.setHeading(space.gear(player));
 
                 while(checkCheckpoint(player.getSpace())) { //checks if there is a checkpoint
                     Scoring(player, player.getSpace());
@@ -351,7 +379,54 @@ public class GameController  {
 
         return false;
     }
-    
+
+    public boolean checkBlockedWalls(@NotNull Space wall) {
+        Space wall_40 = new Space(board, 4, 0);
+        if (toStringCheck(wall, wall_40)) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean checkifboardedge(@NotNull Player player){
+        Space top0 = new Space(board,0,0);
+        Space top1 = new Space(board,1,0);
+        Space top2 = new Space(board,2,0);
+        Space top3 = new Space(board,3,0);
+        Space top4 = new Space(board,4,0);
+        Space top5 = new Space(board,5,0);
+        Space top6 = new Space(board,6,0);
+        Space top7 = new Space(board,7,0);
+
+        if (toStringCheck(player.getSpace(),top0) && player.getHeading() == Heading.NORTH){
+            return true;
+        }
+        if (toStringCheck(player.getSpace(),top1) && player.getHeading() == Heading.NORTH){
+            return true;
+        }
+        if (toStringCheck(player.getSpace(),top2) && player.getHeading() == Heading.NORTH){
+            return true;
+        }
+        if (toStringCheck(player.getSpace(),top3) && player.getHeading() == Heading.NORTH){
+            return true;
+        }
+        if (toStringCheck(player.getSpace(),top4) && player.getHeading() == Heading.NORTH){
+            return true;
+        }
+        if (toStringCheck(player.getSpace(),top5) && player.getHeading() == Heading.NORTH){
+            return true;
+        }
+        if (toStringCheck(player.getSpace(),top6) && player.getHeading() == Heading.NORTH){
+            return true;
+        }
+        if (toStringCheck(player.getSpace(),top7) && player.getHeading() == Heading.NORTH){
+            return true;
+        }
+
+
+
+        return false;
+    }
     /** manually added conveyor belt  */
     public boolean checkConveyerbelt(@NotNull Space space){
         // 17-east,27-east,37-east,47-east,57-east,67-north
@@ -401,9 +476,10 @@ public class GameController  {
         } else { return false; }
     }
 
-    public void conveyor (@NotNull Player player, @NotNull Space space){
+    public void conveyor (@NotNull Player player, @NotNull Space space) {
         Space player_space = player.getSpace();
-        if(checkConveyerbelt(player_space) == true){
+        Space Gear_Space = new Space(board, 4, 5);
+        if (checkConveyerbelt(player_space) == true) {
             Heading BELT = space.conveyorBelt(player_space);
             Heading player_heading = player.getHeading();
             player.setHeading(BELT);
@@ -413,34 +489,46 @@ public class GameController  {
                 Space target = board.getNeighbour(space, heading);
 
                 if (target != null) {
-                    if(target.getPlayer() != null){
+                    if (target.getPlayer() != null) {
                         Player targetplayer = target.getPlayer();
                         Heading targetplayer_head = targetplayer.getHeading();
-                        if(checkHeadingTowardsEachOther(player,targetplayer) == true){
+                        Heading targetplayer_head1 = targetplayer.getHeading();
+                        if (checkHeadingTowardsEachOther(player, targetplayer) == true) {
                             turnAround(targetplayer);
-                            moveForward(targetplayer);
-                            turnAround(targetplayer);
-
-
-
                             //moveForward(targetplayer);
-                            //targetplayer.setHeading(targetplayer_head);
+                            turnAround(targetplayer);
+                            if (toStringCheck(Gear_Space, targetplayer.getSpace())) {
+                                turnLeft(targetplayer);
+                            }
+                        }
+                        if (checkHeadingTowardsEachOther(player, targetplayer) == false) {
+                            targetplayer.setHeading(BELT);
+                            moveForward(targetplayer);
+                            if (toStringCheck(Gear_Space, targetplayer.getSpace())) {
+                                turnLeft(targetplayer);
+                            }
+                            if(toStringCheck(Gear_Space, player.getSpace())== true){
+                                //do nothing
+                            }
+                            if(toStringCheck(Gear_Space, player.getSpace())== false){
+                                targetplayer.setHeading(targetplayer_head1);
+                            }
                             //target.setPlayer(player);
                             //space.setPlayer(targetplayer);
                         }
-                        else {
-                            targetplayer.setHeading(BELT);
-                            moveForward(targetplayer);
-                            targetplayer.setHeading(targetplayer_head);
-                            target.setPlayer(player);
-                            space.setPlayer(targetplayer);
-                        }
 //                        else { moveForward(targetplayer);
 //                        }
+                        //}
+                        //target.setPlayer(player);       // using forward method here caused problems so, its copied.
+
+//                    if(toStringCheck(Gear_Space, targetplayer.getSpace())){
+//                        turnLeft(targetplayer);
+                        // }
                     }
-                    target.setPlayer(player);       // using forward method here caused problems so, its copied.
-                    }
-                player.setHeading(player_heading); //puts player heading back to were it was
+                     //puts player heading back to were it was
+                }
+                moveForward(player);
+                player.setHeading(player_heading);
             }
         }
     }
