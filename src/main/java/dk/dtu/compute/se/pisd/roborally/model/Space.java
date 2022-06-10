@@ -23,7 +23,6 @@ package dk.dtu.compute.se.pisd.roborally.model;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 import dk.dtu.compute.se.pisd.roborally.controller.FieldAction;
-import dk.dtu.compute.se.pisd.roborally.controller.GameController;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -90,26 +89,26 @@ public class Space extends Subject {
         Space space_cb25 = new Space(board,2,5);
 
 
-        if(toStringcheck(space,space_cb17)){return Heading.EAST;}
-        if(toStringcheck(space,space_cb27)){return Heading.EAST;}
-        if(toStringcheck(space,space_cb37)){return Heading.EAST;}
-        if(toStringcheck(space,space_cb47)){return Heading.EAST;}
-        if(toStringcheck(space,space_cb57)){return Heading.EAST;}
-        if(toStringcheck(space,space_cb67)){return Heading.NORTH;}
+        if(toStringCheck(space,space_cb17)){return Heading.EAST;}
+        if(toStringCheck(space,space_cb27)){return Heading.EAST;}
+        if(toStringCheck(space,space_cb37)){return Heading.EAST;}
+        if(toStringCheck(space,space_cb47)){return Heading.EAST;}
+        if(toStringCheck(space,space_cb57)){return Heading.EAST;}
+        if(toStringCheck(space,space_cb67)){return Heading.NORTH;}
         //--
-        if(toStringcheck(space,space_cb32)){return Heading.WEST;}
-        if(toStringcheck(space,space_cb42)){return Heading.WEST;}
-        if(toStringcheck(space,space_cb52)){return Heading.WEST;}
-        if(toStringcheck(space,space_cb53)){return Heading.NORTH;}
-        if(toStringcheck(space,space_cb54)){return Heading.NORTH;}
+        if(toStringCheck(space,space_cb32)){return Heading.WEST;}
+        if(toStringCheck(space,space_cb42)){return Heading.WEST;}
+        if(toStringCheck(space,space_cb52)){return Heading.WEST;}
+        if(toStringCheck(space,space_cb53)){return Heading.NORTH;}
+        if(toStringCheck(space,space_cb54)){return Heading.NORTH;}
         //--
-        if(toStringcheck(space,space_cb01)){return Heading.SOUTH;}
-        if(toStringcheck(space,space_cb02)){return Heading.SOUTH;}
-        if(toStringcheck(space,space_cb03)){return Heading.EAST;}
-        if(toStringcheck(space,space_cb13)){return Heading.SOUTH;}
-        if(toStringcheck(space,space_cb14)){return Heading.EAST;}
-        if(toStringcheck(space,space_cb24)){return Heading.SOUTH;}
-        if(toStringcheck(space,space_cb25)){return Heading.EAST;}
+        if(toStringCheck(space,space_cb01)){return Heading.SOUTH;}
+        if(toStringCheck(space,space_cb02)){return Heading.SOUTH;}
+        if(toStringCheck(space,space_cb03)){return Heading.EAST;}
+        if(toStringCheck(space,space_cb13)){return Heading.SOUTH;}
+        if(toStringCheck(space,space_cb14)){return Heading.EAST;}
+        if(toStringCheck(space,space_cb24)){return Heading.SOUTH;}
+        if(toStringCheck(space,space_cb25)){return Heading.EAST;}
 
         return null;
     }
@@ -117,7 +116,7 @@ public class Space extends Subject {
     private String toString(@NotNull Space space) {
         return  space.x+" "+space.y;
     }
-    private boolean toStringcheck(@NotNull Space space1, @NotNull Space space2) {
+    private boolean toStringCheck(@NotNull Space space1, @NotNull Space space2) {
 
         String space11 = toString(space1);
         String space22 = toString(space2);
@@ -135,21 +134,21 @@ public class Space extends Subject {
         Space space_CP3 = new Space(board,5,0);
         Space space_CP4 = new Space(board,4,3);
 
-        if(toStringcheck(space,space_CP1)){
+        if(toStringCheck(space,space_CP1)){
             return 1;
         }
-        if(toStringcheck(space,space_CP2)){
+        if(toStringCheck(space,space_CP2)){
             return 2;
         }
-        if(toStringcheck(space,space_CP3)){
+        if(toStringCheck(space,space_CP3)){
             return 3;
         }
-        if(toStringcheck(space,space_CP4)){
+        if(toStringCheck(space,space_CP4)){
             return 4;
         } else {return 0;}
     }
     /** Attempt at manually adding BlockedWalls */
-    public Boolean BlockedWalls(@NotNull Player player) {
+    public Boolean blockedWalls(@NotNull Player player) {
         Space player_space = player.getSpace();
         Heading player_heading = player.getHeading();
 
@@ -165,54 +164,54 @@ public class Space extends Subject {
         Space wall_26 = new Space(board, 2, 6);
         Space wall_16 = new Space(board, 1, 6); Space wall_15 = new Space(board, 1, 5); // two different headings
 
-        if (toStringcheck(player_space, wall_40)) {
+        if (toStringCheck(player_space, wall_40)) {
             if (player_heading == Heading.WEST) {return true;}
         }
-        if (toStringcheck(player_space, wall_30)) {
+        if (toStringCheck(player_space, wall_30)) {
             if (player_heading == Heading.EAST) {return true;}
         }
-        if (toStringcheck(player_space, wall_41)) {
+        if (toStringCheck(player_space, wall_41)) {
             if (player_heading == Heading.WEST) {return true;}
         }
-        if (toStringcheck(player_space, wall_31)) {
+        if (toStringCheck(player_space, wall_31)) {
             if (player_heading == Heading.EAST) {return true;}
         }
-        if (toStringcheck(player_space, wall_51)) {
+        if (toStringCheck(player_space, wall_51)) {
             if (player_heading == Heading.SOUTH) {return true;}
         }
-        if (toStringcheck(player_space, wall_62)) {
+        if (toStringCheck(player_space, wall_62)) {
             if (player_heading == Heading.WEST) {return true;}
         }
-        if (toStringcheck(player_space, wall_63)) {
+        if (toStringCheck(player_space, wall_63)) {
             if (player_heading == Heading.WEST) {return true;}
         }
-        if (toStringcheck(player_space, wall_65)) {
+        if (toStringCheck(player_space, wall_65)) {
             if (player_heading == Heading.WEST) {return true;}
         }
-        if (toStringcheck(player_space, wall_55)) {
+        if (toStringCheck(player_space, wall_55)) {
             if (player_heading == Heading.EAST) {return true;}
         }
-        if (toStringcheck(player_space, wall_66)) {
+        if (toStringCheck(player_space, wall_66)) {
             if (player_heading == Heading.WEST) {return true;}
         }
-        if (toStringcheck(player_space, wall_56)) {
+        if (toStringCheck(player_space, wall_56)) {
             if (player_heading == Heading.EAST ) {return true;}
             if (player_heading == Heading.SOUTH) {return true;}
         }
-        if (toStringcheck(player_space, wall_46)) {
+        if (toStringCheck(player_space, wall_46)) {
             if (player_heading == Heading.SOUTH) {return true;}
         }
-        if (toStringcheck(player_space, wall_36)) {
+        if (toStringCheck(player_space, wall_36)) {
             if (player_heading == Heading.SOUTH) { return true;}
         }
-        if (toStringcheck(player_space, wall_26)) {
+        if (toStringCheck(player_space, wall_26)) {
             if (player_heading == Heading.SOUTH) { return true;}
         }
-        if (toStringcheck(player_space, wall_16)) {
+        if (toStringCheck(player_space, wall_16)) {
             if (player_heading == Heading.SOUTH) {return true;}
             if (player_heading == Heading.NORTH) {return true;}
         }
-        if (toStringcheck(player_space, wall_15)) {
+        if (toStringCheck(player_space, wall_15)) {
             if (player_heading == Heading.SOUTH) {return true;}
         }
         return false;
@@ -225,7 +224,7 @@ public class Space extends Subject {
         Heading player_heading = player.getHeading();
         Space gear_1 = new Space(board, 4, 5);
 
-        if (toStringcheck(player_space, gear_1)) {
+        if (toStringCheck(player_space, gear_1)) {
             if (player_heading == Heading.WEST)  {return  player_heading.SOUTH;}
             if (player_heading == Heading.SOUTH) {return  player_heading.EAST;}
             if (player_heading == Heading.EAST)  {return  player_heading.NORTH;}

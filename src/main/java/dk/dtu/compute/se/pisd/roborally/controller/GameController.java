@@ -22,11 +22,8 @@
 package dk.dtu.compute.se.pisd.roborally.controller;
 
 
-import dk.dtu.compute.se.pisd.roborally.RoboRally;
 import dk.dtu.compute.se.pisd.roborally.model.*;
 import org.jetbrains.annotations.NotNull;
-
-import static java.lang.System.exit;
 
 /**
  * ...
@@ -207,12 +204,12 @@ public class GameController  {
                     this.fastForward(player);
                     break;
                 case U_TURN:
-                    this.turnaround(player);
+                    this.turnAround(player);
                     break;
                 case BACKUP:
-                    this.turnaround(player);
+                    this.turnAround(player);
                     this.moveForward(player);
-                    this.turnaround(player);
+                    this.turnAround(player);
                     break;
                 default:
                     // DO NOTHING (for now)
@@ -263,7 +260,7 @@ public class GameController  {
                 // -- this should be fixed now by pushing the player towards the space they are 'heading'
 
                 // kald på metode her - Tobias
-                if(space.BlockedWalls(player)) {
+                if(space.blockedWalls(player)) {
                     return;
                 }
 
@@ -271,7 +268,7 @@ public class GameController  {
                 if(target.getPlayer() != null){
                     Player targetplayer = target.getPlayer();
                     Heading targetplayer_head = targetplayer.getHeading();
-                    if(checkheadingtowardseachother(player,targetplayer) == true){
+                    if(checkHeadingTowardsEachOther(player,targetplayer) == true){
                         targetplayer.setHeading(heading);
                         moveForward(targetplayer);
                         targetplayer.setHeading(targetplayer_head);
@@ -298,7 +295,7 @@ public class GameController  {
         }
     }
 
-    public boolean checkheadingtowardseachother(@NotNull Player player,@NotNull Player targetplayer){
+    public boolean checkHeadingTowardsEachOther(@NotNull Player player, @NotNull Player targetplayer){
 
         Heading player_heading = player.getHeading();
         Heading targetplayer_heading = targetplayer.getHeading();
@@ -319,9 +316,9 @@ public class GameController  {
         return false;
     }
 
-    public boolean checkblockedwalls(@NotNull Space wall) {
+    public boolean checkBlockedWalls(@NotNull Space wall) {
         Space wall_40 = new Space(board, 4, 0);
-        if (toStringcheck(wall, wall_40)) {
+        if (toStringCheck(wall, wall_40)) {
             return true;
         }
         return false;
@@ -342,24 +339,24 @@ public class GameController  {
         Space space_cb14 = new Space(board,1,4);Space space_cb24 = new Space(board,2,4);
         Space space_cb25 = new Space(board,2,5);
 
-        if(toStringcheck(space,space_cb17)){return true;}
-        if(toStringcheck(space,space_cb27)){return true;}
-        if(toStringcheck(space,space_cb37)){return true;}
-        if(toStringcheck(space,space_cb47)){return true;}
-        if(toStringcheck(space,space_cb57)){return true;}
-        if(toStringcheck(space,space_cb67)){return true;}
-        if(toStringcheck(space,space_cb32)){return true;}
-        if(toStringcheck(space,space_cb42)){return true;}
-        if(toStringcheck(space,space_cb52)){return true;}
-        if(toStringcheck(space,space_cb53)){return true;}
-        if(toStringcheck(space,space_cb54)){return true;}
-        if(toStringcheck(space,space_cb01)){return true;}
-        if(toStringcheck(space,space_cb02)){return true;}
-        if(toStringcheck(space,space_cb03)){return true;}
-        if(toStringcheck(space,space_cb13)){return true;}
-        if(toStringcheck(space,space_cb14)){return true;}
-        if(toStringcheck(space,space_cb24)){return true;}
-        if(toStringcheck(space,space_cb25)){return true;}
+        if(toStringCheck(space,space_cb17)){return true;}
+        if(toStringCheck(space,space_cb27)){return true;}
+        if(toStringCheck(space,space_cb37)){return true;}
+        if(toStringCheck(space,space_cb47)){return true;}
+        if(toStringCheck(space,space_cb57)){return true;}
+        if(toStringCheck(space,space_cb67)){return true;}
+        if(toStringCheck(space,space_cb32)){return true;}
+        if(toStringCheck(space,space_cb42)){return true;}
+        if(toStringCheck(space,space_cb52)){return true;}
+        if(toStringCheck(space,space_cb53)){return true;}
+        if(toStringCheck(space,space_cb54)){return true;}
+        if(toStringCheck(space,space_cb01)){return true;}
+        if(toStringCheck(space,space_cb02)){return true;}
+        if(toStringCheck(space,space_cb03)){return true;}
+        if(toStringCheck(space,space_cb13)){return true;}
+        if(toStringCheck(space,space_cb14)){return true;}
+        if(toStringCheck(space,space_cb24)){return true;}
+        if(toStringCheck(space,space_cb25)){return true;}
 
         return false;
     }
@@ -367,7 +364,7 @@ public class GameController  {
     private String toString(@NotNull Space space) {
         return  space.x+" "+space.y;
     }
-    private boolean toStringcheck(@NotNull Space space1,@NotNull Space space2) {
+    private boolean toStringCheck(@NotNull Space space1, @NotNull Space space2) {
         String space11 = toString(space1);
         String space22 = toString(space2);
         if(space11.equals(space22)) {
@@ -390,7 +387,7 @@ public class GameController  {
                     if(target.getPlayer() != null){
                         Player targetplayer = target.getPlayer();
                         Heading targetplayer_head = targetplayer.getHeading();
-                        if(checkheadingtowardseachother(player,targetplayer) == true){
+                        if(checkHeadingTowardsEachOther(player,targetplayer) == true){
                             targetplayer.setHeading(heading);
                             moveForward(targetplayer);
                             targetplayer.setHeading(targetplayer_head);
@@ -408,7 +405,7 @@ public class GameController  {
     }
     /** manually added conveyor belt . end  */
 
-    public void turnaround(@NotNull Player player){
+    public void turnAround(@NotNull Player player){
         if (player != null && player.board == board) {
             player.setHeading(player.getHeading().next());
         }
@@ -443,16 +440,16 @@ public class GameController  {
         Space space_50 = new Space(board,5,0);
         Space space_43 = new Space(board,4,3);
 
-        if(toStringcheck(space,space_66)){
+        if(toStringCheck(space,space_66)){
             return true;
         }
-        if(toStringcheck(space,space_15)){
+        if(toStringCheck(space,space_15)){
             return true;
         }
-        if(toStringcheck(space,space_50)){
+        if(toStringCheck(space,space_50)){
             return true;
         }
-        if(toStringcheck(space,space_43)){
+        if(toStringCheck(space,space_43)){
             return true;
         }
         return false;
