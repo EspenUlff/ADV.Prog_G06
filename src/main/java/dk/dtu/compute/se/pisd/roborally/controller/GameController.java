@@ -270,7 +270,19 @@ public class GameController  {
 
                 if(target.getPlayer() != null){
                     Player targetplayer = target.getPlayer();
-                    moveForward(targetplayer);
+                    Heading targetplayer_head = targetplayer.getHeading();
+                    if(checkheadingtowardseachother(player,targetplayer) == true){
+                        targetplayer.setHeading(heading);
+                        moveForward(targetplayer);
+                        targetplayer.setHeading(targetplayer_head);
+                        target.setPlayer(player);
+                        space.setPlayer(targetplayer);
+                        while(checkConveyerbelt(targetplayer.getSpace())) { //checks if there is a conveyorbelt
+                            conveyor(targetplayer, targetplayer.getSpace());
+                        }
+                    }
+                    else { moveForward(targetplayer);
+                    }
                 }
                 target.setPlayer(player);
 
@@ -284,6 +296,28 @@ public class GameController  {
             }
         }
     }
+
+    public boolean checkheadingtowardseachother(@NotNull Player player,@NotNull Player targetplayer){
+
+        Heading player_heading = player.getHeading();
+        Heading targetplayer_heading = targetplayer.getHeading();
+
+        if(player_heading == Heading.EAST && targetplayer_heading == Heading.WEST){
+            return true;
+        }
+        if(player_heading == Heading.NORTH && targetplayer_heading == Heading.SOUTH){
+            return true;
+        }
+        if(player_heading == Heading.WEST && targetplayer_heading == Heading.EAST){
+            return true;
+        }
+        if(player_heading == Heading.SOUTH && targetplayer_heading == Heading.NORTH){
+            return true;
+        }
+
+        return false;
+    }
+
     public boolean checkblockedwalls(@NotNull Space wall) {
         Space wall_40 = new Space(board, 4, 0);
         if (toStringcheck(wall, wall_40)) {
@@ -291,7 +325,6 @@ public class GameController  {
         }
         return false;
     }
-
     /** manually added conveyor belt  */
     public boolean checkConveyerbelt(@NotNull Space space){
         // 17-east,27-east,37-east,47-east,57-east,67-north
@@ -353,12 +386,21 @@ public class GameController  {
                 Space target = board.getNeighbour(space, heading);
 
                 if (target != null) {
-                    if (target.getPlayer() != null) {
+                    if(target.getPlayer() != null){
                         Player targetplayer = target.getPlayer();
-                        moveForward(targetplayer);
+                        Heading targetplayer_head = targetplayer.getHeading();
+                        if(checkheadingtowardseachother(player,targetplayer) == true){
+                            targetplayer.setHeading(heading);
+                            moveForward(targetplayer);
+                            targetplayer.setHeading(targetplayer_head);
+                            target.setPlayer(player);
+                            space.setPlayer(targetplayer);
+                        }
+                        else { moveForward(targetplayer);
+                        }
                     }
                     target.setPlayer(player);       // using forward method here caused problems so, its copied.
-                }
+                    }
                 player.setHeading(player_heading); //puts player heading back to were it was
             }
         }
