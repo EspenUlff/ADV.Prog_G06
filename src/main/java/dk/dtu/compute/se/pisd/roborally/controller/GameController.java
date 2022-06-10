@@ -359,10 +359,10 @@ public class GameController  {
         }
     }
 
-    public boolean checkHeadingTowardsEachOther(@NotNull Player player, @NotNull Player targetplayer){
+    public boolean checkHeadingTowardsEachOther(@NotNull Player player, @NotNull Player targetPlayer){
 
         Heading player_heading = player.getHeading();
-        Heading targetplayer_heading = targetplayer.getHeading();
+        Heading targetplayer_heading = targetPlayer.getHeading();
 
         if(player_heading == Heading.EAST && targetplayer_heading == Heading.WEST){
             return true;

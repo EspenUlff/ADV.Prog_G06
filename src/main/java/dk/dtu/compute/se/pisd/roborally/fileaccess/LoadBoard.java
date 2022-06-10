@@ -160,8 +160,8 @@ public class LoadBoard {
             //file.createNewFile();
             fileWriter = new FileWriter(file);
             writer = gson.newJsonWriter(fileWriter);
-            String thisjason = gson.toJson(template, template.getClass());
-            System.out.println(thisjason);
+            String thisJson = gson.toJson(template, template.getClass());
+            System.out.println(thisJson);
             writer.close();
         } catch (IOException e1) {
             e1.printStackTrace();
