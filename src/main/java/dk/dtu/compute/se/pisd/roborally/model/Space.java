@@ -126,7 +126,7 @@ public class Space extends Subject {
     }
     /** manually added conveyor belt . end  */
 
-    // TODO This is wrong need to fix it - Jacob
+
     /** Attempt at manually adding checkpoints  */
     public int checkpoint(@NotNull Space space) {
         Space space_CP1 = new Space(board,6,6);
