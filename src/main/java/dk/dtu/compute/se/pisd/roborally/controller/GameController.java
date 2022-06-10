@@ -266,6 +266,7 @@ public class GameController  {
                 if(space.blockedWalls(player)) {
                     return;
                 }
+                //if( checkheadingtowardseachother(player, ) )
 
 
                 if(target.getPlayer() != null){
@@ -293,6 +294,12 @@ public class GameController  {
 
 
                 }
+
+                //fixes issue where a player tries to forward into a conveyor
+                if(checkConveyerbelt(target) == true){
+                    return;
+                }
+
                 player.setHeading(space.gear(player));
             }
         }
