@@ -262,7 +262,7 @@ public class GameController  {
                 //     implemented in a way so that other players are pushed away!
                 // -- this should be fixed now by pushing the player towards the space they are 'heading'
 
-                // kald på metode her - Tobias
+                // kald på metode her - Tobias. tjekker om der er væg og gør så player ikke rykker
                 if(space.blockedWalls(player)) {
                     return;
                 }

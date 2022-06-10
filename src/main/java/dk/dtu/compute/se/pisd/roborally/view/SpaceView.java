@@ -160,7 +160,7 @@ public class SpaceView extends StackPane implements ViewObserver {
         Polygon fig = new Polygon(0.0, 5.0,
                 55.0, 5.0,
                 30.0, 55.0);
-        fig.setFill(Color.YELLOW);
+        fig.setFill(Color.PURPLE);
         String north = "NORTH";
         String east = "EAST";
         String south = "SOUTH";
@@ -374,7 +374,7 @@ public class SpaceView extends StackPane implements ViewObserver {
             circle.setFill(Color.GREY);
             this.getChildren().add(circle);
 
-            Label g1 = new Label("L-rotate");
+            Label g1 = new Label("L-rotater");
             g1.setFont(Font.font("Tahoma",12));
             g1.setTextFill(Color.AQUA);
             this.getChildren().add(g1);

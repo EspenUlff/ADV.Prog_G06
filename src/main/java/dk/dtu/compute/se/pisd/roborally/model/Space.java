@@ -218,7 +218,6 @@ public class Space extends Subject {
     }
 
     /** Attempt at manually adding Gear that rotates left */
-    // ved ikke helt om det virker - Tobias//
     public Heading gear(@NotNull Player player) {
         Space player_space = player.getSpace();
         Heading player_heading = player.getHeading();
