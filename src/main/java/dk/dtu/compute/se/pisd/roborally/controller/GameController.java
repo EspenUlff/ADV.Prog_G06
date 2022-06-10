@@ -257,21 +257,25 @@ public class GameController  {
             Space target = board.getNeighbour(space, heading);
 
             if (target != null) {
-                // XXX note that this removes an other player from the space, when there
-                //     is another player on the target. Eventually, this needs to be
-                //     implemented in a way so that other players are pushed away!
-                // -- this should be fixed now by pushing the player towards the space they are 'heading'
 
-                // kald på metode her - Tobias
                 if(space.blockedWalls(player)) {
                     return;
                 }
-                //if( checkheadingtowardseachother(player, ) )
+
 
 
                 if(target.getPlayer() != null){
                     Player targetplayer = target.getPlayer();
                     Heading targetplayer_head = targetplayer.getHeading();
+
+                    targetplayer.setHeading(heading);
+                    if(space.blockedWalls(targetplayer)) {
+                        targetplayer.setHeading(targetplayer_head);
+                        return;
+                    }
+                    targetplayer.setHeading(targetplayer_head);
+
+
                     if(checkHeadingTowardsEachOther(player,targetplayer) == true){
                         targetplayer.setHeading(heading);
                         moveForward(targetplayer);
@@ -282,26 +286,40 @@ public class GameController  {
                             conveyor(targetplayer, targetplayer.getSpace());
                         }
                     }
-                    else { moveForward(targetplayer);
+                    if((checkHeadingTowardsEachOther(player,targetplayer) || checkConveyerbelt(targetplayer.getSpace()) )== false){
+                        moveForward(targetplayer);
                     }
+                    Space space_target = targetplayer.getSpace();
+                    Space target2 = board.getNeighbour(space_target, targetplayer_head);
+                    if (checkConveyerbelt(target2) == true) {
+                        return;
+                    }
+//                    if (checkConveyerbelt(targetplayer.getSpace()) == false) {
+//                        moveForward(targetplayer);
+//                        target.setPlayer(player);
+//                        return;
+//                    }
                 }
+//000000
+//                if(target.getPlayer() != null) {
+//                    Player targetplayer = target.getPlayer();
+//
+//                }
+                //move the player to the place its heading
                 target.setPlayer(player);
 
-
-                // dont know what happens with obstacles
-                while(checkConveyerbelt(player.getSpace())) { //checks if there is a conveyorbelt
+                // checks if the current space is a conveyorbelt, continues until it isnt anymore
+                while(checkConveyerbelt(player.getSpace())) {
                     conveyor(player, player.getSpace());
-
-
                 }
 
                 //fixes issue where a player tries to forward into a conveyor
                 if(checkConveyerbelt(target) == true){
                     return;
                 }
-
                 player.setHeading(space.gear(player));
             }
+
         }
     }
 
@@ -398,13 +416,21 @@ public class GameController  {
                         Player targetplayer = target.getPlayer();
                         Heading targetplayer_head = targetplayer.getHeading();
                         if(checkHeadingTowardsEachOther(player,targetplayer) == true){
-                            targetplayer.setHeading(heading);
+                            turnAround(targetplayer);
+                            moveForward(targetplayer);
+                            turnAround(targetplayer);
+
+
+
+                            //moveForward(targetplayer);
+                            //targetplayer.setHeading(targetplayer_head);
+                            //target.setPlayer(player);
+                            //space.setPlayer(targetplayer);
+                        }
+                        else {
+                            targetplayer.setHeading(BELT);
                             moveForward(targetplayer);
                             targetplayer.setHeading(targetplayer_head);
-                            target.setPlayer(player);
-                            space.setPlayer(targetplayer);
-                        }
-                        else { moveForward(targetplayer);
                         }
                     }
                     target.setPlayer(player);       // using forward method here caused problems so, its copied.
