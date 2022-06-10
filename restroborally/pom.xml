@@ -8,11 +8,11 @@
         <version>2.7.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.web</groupId>
-    <artifactId>restful</artifactId>
+    <groupId>com.roborally</groupId>
+    <artifactId>restroborally</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>restful</name>
-    <description>restful</description>
+    <name>restroborally</name>
+    <description>restroborally</description>
     <properties>
         <java.version>17</java.version>
     </properties>

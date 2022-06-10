@@ -145,7 +145,8 @@ public class Space extends Subject {
         }
         if(toStringCheck(space,space_CP4)){
             return 4;
-        } else {return 0;}
+        }
+        return 0;
     }
     /** Attempt at manually adding BlockedWalls */
     public Boolean blockedWalls(@NotNull Player player) {

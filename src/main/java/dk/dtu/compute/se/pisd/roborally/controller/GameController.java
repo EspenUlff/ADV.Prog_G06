@@ -331,6 +331,7 @@ public class GameController  {
 
                 //moves the player on target space
                 target.setPlayer(player);
+                Scoring(player, player.getSpace());
 
                 // checks if the space is a gear, and turns head if is.
                 Space Gear_Space = new Space(board,4,5);
@@ -352,9 +353,10 @@ public class GameController  {
                 }
 
 
-                while(checkCheckpoint(player.getSpace())) { //checks if there is a checkpoint
-                    Scoring(player, player.getSpace());
-                }
+//                while(checkCheckpoint(player.getSpace())) { //checks if there is a checkpoint
+//
+//                }
+
             }
         }
     }
@@ -380,53 +382,6 @@ public class GameController  {
         return false;
     }
 
-    public boolean checkBlockedWalls(@NotNull Space wall) {
-        Space wall_40 = new Space(board, 4, 0);
-        if (toStringCheck(wall, wall_40)) {
-            return true;
-        }
-        return false;
-    }
-
-    public boolean checkifboardedge(@NotNull Player player){
-        Space top0 = new Space(board,0,0);
-        Space top1 = new Space(board,1,0);
-        Space top2 = new Space(board,2,0);
-        Space top3 = new Space(board,3,0);
-        Space top4 = new Space(board,4,0);
-        Space top5 = new Space(board,5,0);
-        Space top6 = new Space(board,6,0);
-        Space top7 = new Space(board,7,0);
-
-        if (toStringCheck(player.getSpace(),top0) && player.getHeading() == Heading.NORTH){
-            return true;
-        }
-        if (toStringCheck(player.getSpace(),top1) && player.getHeading() == Heading.NORTH){
-            return true;
-        }
-        if (toStringCheck(player.getSpace(),top2) && player.getHeading() == Heading.NORTH){
-            return true;
-        }
-        if (toStringCheck(player.getSpace(),top3) && player.getHeading() == Heading.NORTH){
-            return true;
-        }
-        if (toStringCheck(player.getSpace(),top4) && player.getHeading() == Heading.NORTH){
-            return true;
-        }
-        if (toStringCheck(player.getSpace(),top5) && player.getHeading() == Heading.NORTH){
-            return true;
-        }
-        if (toStringCheck(player.getSpace(),top6) && player.getHeading() == Heading.NORTH){
-            return true;
-        }
-        if (toStringCheck(player.getSpace(),top7) && player.getHeading() == Heading.NORTH){
-            return true;
-        }
-
-
-
-        return false;
-    }
     /** manually added conveyor belt  */
     public boolean checkConveyerbelt(@NotNull Space space){
         // 17-east,27-east,37-east,47-east,57-east,67-north
@@ -576,7 +531,7 @@ public class GameController  {
         return false;
     }
     // TODO Not working properly - Jacob
-    public void Scoring(@NotNull Player player, @NotNull Space space) {
+    public int Scoring(@NotNull Player player, @NotNull Space space) {
         Space player_space = player.getSpace();
 
         if (checkCheckpoint(player_space)) {
@@ -586,10 +541,11 @@ public class GameController  {
                 player.setProgress(value);
             }
             //sout to try and see if it even works
-            System.out.println(player.getProgress());
+            //System.out.println(player.getProgress());
         }
+        return player.getProgress();
 
-        if (player.getProgress() == 4) {
+        //if (player.getProgress() == 4) {
         //    Breaks execution of 'program' sequence
         //    Alert alert = new Alert(Alert.AlertType.INFORMATION);
         //    alert.setTitle("Game Over");
@@ -600,7 +556,7 @@ public class GameController  {
         //        Platform.exit();
         //    }
         }
-    }
+
 
     void moveToSpace(@NotNull Player player, @NotNull Space space, @NotNull Heading heading) throws ImpossibleMoveException {
         assert board.getNeighbour(player.getSpace(), heading) == space; // make sure the move to here is possible in principle

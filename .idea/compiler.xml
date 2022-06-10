@@ -6,15 +6,19 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="roborally" />
-        <module name="restful" />
         <module name="ADV.Prog_G06" />
+        <module name="restroborally" />
+        <module name="roborally" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="restful" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="restful" options="-parameters" />
+      <module name="restroborally" options="-parameters" />
       <module name="roborally" options="" />
     </option>
   </component>
