@@ -35,6 +35,8 @@ import javafx.scene.shape.StrokeLineCap;
 import javafx.scene.text.Font;
 import org.jetbrains.annotations.NotNull;
 
+import javax.swing.text.html.ImageView;
+
 /**
  * ...
  *
@@ -47,7 +49,7 @@ public class SpaceView extends StackPane implements ViewObserver {
     final public static int SPACE_WIDTH = 60;  // 60; // 75;
 
     public final Space space;
-
+    StackPane stack_pane = new StackPane();
 
     public SpaceView(@NotNull Space space) {
         this.space = space;
@@ -313,7 +315,7 @@ public class SpaceView extends StackPane implements ViewObserver {
     }
 
     private void updatePlayer() {
-        this.getChildren().clear();
+        //this.getChildren().clear();
 
         Player player = space.getPlayer();
         if (player != null) {
@@ -327,7 +329,7 @@ public class SpaceView extends StackPane implements ViewObserver {
             }
 
             arrow.setRotate((90 * player.getHeading().ordinal()) % 360);
-            this.getChildren().add(arrow);
+            this.getChildren().addAll(arrow);
         }
 
     }
@@ -382,16 +384,20 @@ public class SpaceView extends StackPane implements ViewObserver {
 
     @Override
     public void updateView(Subject subject) {
+        updatePlayer();
         if (subject == this.space) {
             this.getChildren().clear();
+            UpdateWalls();
+            updateBelt();
+            updateCP();
+            updateGear();
             updatePlayer();
         }
-        UpdateWalls();
-        updateBelt();
-        updateCP();
-        updateGear();
+
+
 
     }
+
 
 
 }
