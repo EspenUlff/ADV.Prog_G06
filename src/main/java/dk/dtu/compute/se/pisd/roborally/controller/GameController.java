@@ -436,8 +436,8 @@ public class GameController  {
                             target.setPlayer(player);
                             space.setPlayer(targetplayer);
                         }
-                        else { moveForward(targetplayer);
-                        }
+//                        else { moveForward(targetplayer);
+//                        }
                     }
                     target.setPlayer(player);       // using forward method here caused problems so, its copied.
                     }
