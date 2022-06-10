@@ -235,7 +235,7 @@ public class Space extends Subject {
             if (player_heading == Heading.SOUTH) {return true;}
         }
 
-        // all egdes
+        // all egdes on board
         if (toStringCheck(player_space, egde_00)) {
             if (player_heading == Heading.WEST) {return true;}
             if (player_heading == Heading.NORTH) {return true;}
