@@ -319,13 +319,6 @@ public class GameController  {
         return false;
     }
 
-    public boolean checkblockedwalls(@NotNull Space wall) {
-        Space wall_40 = new Space(board, 4, 0);
-        if (toStringcheck(wall, wall_40)) {
-            return true;
-        }
-        return false;
-    }
     /** manually added conveyor belt  */
     public boolean checkConveyerbelt(@NotNull Space space){
         // 17-east,27-east,37-east,47-east,57-east,67-north
