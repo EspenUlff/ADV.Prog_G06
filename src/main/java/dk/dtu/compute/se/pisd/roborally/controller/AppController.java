@@ -25,12 +25,7 @@ public class AppController {
         this.roboRally = roboRally;
     }
 
-    // TODO most methods missing here! - low priority
-    // isGameRunning
-    // newGame
-    // stopGame
-    // saveGame
-    // loadGame
+
     public void newGame() {
         ChoiceDialog<Integer> dialog = new ChoiceDialog<>(PLAYER_NUMBER_OPTIONS.get(0), PLAYER_NUMBER_OPTIONS);
         dialog.setTitle("Player number");
@@ -101,7 +96,7 @@ public class AppController {
     }
 
     public void exit() {
-        // TODO needs to be implemented - low priority
+
         if (gameController != null) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Exit RoboRally?");

@@ -131,8 +131,16 @@ public class Player extends Subject {
     public int getProgress() {return progress;}
 
     public void setProgress(@NotNull int value) {
-        this.progress = value;
+        if (value != this.progress) {
+            this.progress = value;
+            notifyChange();
+            if (space != null) {
+                space.playerChanged();
+            }
+
+        }
     }
+
 
     public CommandCardField getProgramField(int i) {
         return program[i];

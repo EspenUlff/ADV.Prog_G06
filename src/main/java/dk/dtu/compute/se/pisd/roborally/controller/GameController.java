@@ -24,7 +24,12 @@ package dk.dtu.compute.se.pisd.roborally.controller;
 
 import dk.dtu.compute.se.pisd.roborally.RoboRally;
 import dk.dtu.compute.se.pisd.roborally.model.*;
+import javafx.application.Platform;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Optional;
 
 import static java.lang.System.exit;
 
@@ -42,10 +47,7 @@ public class GameController  {
         this.board = board;
     }
 
-    // TODO lot of stuff missing here
-    // moveCurrentPlayerToSpace (BoardView)
-    // finish/execute/step button actions (PlayerView)
-    // moveCards (CardFieldView)
+
 
 
 /** moveCurrentPlayerToSpace Added -chvi */
@@ -246,9 +248,9 @@ public class GameController  {
                 }
             }
         }
-    }/** card options slut. */
+    }/** card options end. */
 
-    // TODO: V2
+
     public void moveForward(@NotNull Player player) {
         Space space = player.getSpace();
 
@@ -321,6 +323,10 @@ public class GameController  {
                 }
 
                 player.setHeading(space.gear(player));
+
+                while(checkCheckpoint(player.getSpace())) { //checks if there is a checkpoint
+                    Scoring(player, player.getSpace());
+                }
             }
         }
     }
@@ -456,20 +462,20 @@ public class GameController  {
         }
     }
 
-    // TODO: V2
+
     public void fastForward(@NotNull Player player) {
         moveForward(player);
         moveForward(player);
     }
 
-    // TODO: V2
+
     public void turnRight(@NotNull Player player) {
         if (player != null && player.board == board) {
             player.setHeading(player.getHeading().next());
         }
     }
 
-    // TODO: V2
+
     public void turnLeft(@NotNull Player player) {
         if (player != null && player.board == board) {
             player.setHeading(player.getHeading().prev());
@@ -482,18 +488,10 @@ public class GameController  {
         Space space_50 = new Space(board,5,0);
         Space space_43 = new Space(board,4,3);
 
-        if(toStringCheck(space,space_66)){
-            return true;
-        }
-        if(toStringCheck(space,space_15)){
-            return true;
-        }
-        if(toStringCheck(space,space_50)){
-            return true;
-        }
-        if(toStringCheck(space,space_43)){
-            return true;
-        }
+        if(toStringCheck(space,space_66)){return true;}
+        if(toStringCheck(space,space_15)){return true;}
+        if(toStringCheck(space,space_50)){return true;}
+        if(toStringCheck(space,space_43)){return true;}
         return false;
     }
     // TODO Not working properly - Jacob
@@ -506,10 +504,20 @@ public class GameController  {
             if (player.getProgress() == value - 1) {
                 player.setProgress(value);
             }
+            //sout to try and see if it even works
+            System.out.println(player.getProgress());
         }
-        // TODO Lave en måde at gå tilbage til menuen - Jacob
+
         if (player.getProgress() == 4) {
-            //Something something
+        //    Breaks execution of 'program' sequence
+        //    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        //    alert.setTitle("Game Over");
+        //    alert.setContentText(player.getName() + " Won!");
+        //    Optional<ButtonType> result = alert.showAndWait();
+
+        //    if (result.isPresent() || result.get() == ButtonType.OK) {
+        //        Platform.exit();
+        //    }
         }
     }
 

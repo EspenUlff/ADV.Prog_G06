@@ -37,7 +37,7 @@ import static dk.dtu.compute.se.pisd.roborally.model.Phase.INITIALISATION;
  *
  */
 
-    // TODO getStatusMessage method? måske i ældre versioner? - Espen
+
 public class Board extends Subject {
 
     public final int width;
@@ -198,10 +198,7 @@ public class Board extends Subject {
             if (space.getWalls().contains(heading)) {
                 return null;
             }
-            // TODO needs to be implemented based on the actual spaces
-            //      and obstacles and walls placed there. For now it,
-            //      just calculates the next space in the respective
-            //      direction in a cyclic way.
+
 
             // XXX an other option (not for now) would be that null represents a hole
             //     or the edge of the board in which the players can fall
