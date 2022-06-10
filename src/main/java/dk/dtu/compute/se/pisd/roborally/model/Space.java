@@ -152,6 +152,7 @@ public class Space extends Subject {
         Space player_space = player.getSpace();
         Heading player_heading = player.getHeading();
 
+        //defined walls on board
         Space wall_40 = new Space(board, 4, 0); Space wall_30 = new Space(board, 3, 0);
         Space wall_41 = new Space(board, 4, 1); Space wall_31 = new Space(board, 3, 1);
         Space wall_51 = new Space(board, 5, 1);
@@ -164,11 +165,30 @@ public class Space extends Subject {
         Space wall_26 = new Space(board, 2, 6);
         Space wall_16 = new Space(board, 1, 6); Space wall_15 = new Space(board, 1, 5); // two different headings
 
+        // defined egdes on board
+        Space egde_00 = new Space(board, 0, 0); Space egde_10 = new Space(board, 1, 0);
+        Space egde_20 = new Space(board, 2, 0);
+        Space egde_50 = new Space(board, 5, 0);
+        Space egde_60 = new Space(board, 6, 0); Space egde_70 = new Space(board, 7, 0);
+        Space egde_71 = new Space(board, 7, 1); Space egde_72 = new Space(board, 7, 2);
+        Space egde_73 = new Space(board, 7, 3); Space egde_74 = new Space(board, 7, 4);
+        Space egde_75 = new Space(board, 7, 5); Space egde_76 = new Space(board, 7, 6);
+        Space egde_77 = new Space(board, 7, 7); Space egde_67 = new Space(board, 6, 7);
+        Space egde_57 = new Space(board, 5, 7); Space egde_47 = new Space(board, 4, 7);
+        Space egde_37 = new Space(board, 3, 7); Space egde_27 = new Space(board, 2, 7);
+        Space egde_17 = new Space(board, 1, 7); Space egde_07 = new Space(board, 0, 7);
+        Space egde_06 = new Space(board, 0, 6); Space egde_05 = new Space(board, 0, 5);
+        Space egde_04 = new Space(board, 0, 4); Space egde_03 = new Space(board, 0, 3);
+        Space egde_02 = new Space(board, 0, 2); Space egde_01 = new Space(board, 0, 1);
+
+         // all Blocking walls
         if (toStringCheck(player_space, wall_40)) {
             if (player_heading == Heading.WEST) {return true;}
+            if (player_heading == Heading.NORTH) {return true;}
         }
         if (toStringCheck(player_space, wall_30)) {
             if (player_heading == Heading.EAST) {return true;}
+            if (player_heading == Heading.NORTH) {return true;}
         }
         if (toStringCheck(player_space, wall_41)) {
             if (player_heading == Heading.WEST) {return true;}
@@ -214,6 +234,91 @@ public class Space extends Subject {
         if (toStringCheck(player_space, wall_15)) {
             if (player_heading == Heading.SOUTH) {return true;}
         }
+
+        // all egdes
+        if (toStringCheck(player_space, egde_00)) {
+            if (player_heading == Heading.WEST) {return true;}
+            if (player_heading == Heading.NORTH) {return true;}
+        }
+        if (toStringCheck(player_space, egde_10)) {
+            if (player_heading == Heading.NORTH) {return true;}
+        }
+        if (toStringCheck(player_space, egde_20)) {
+            if (player_heading == Heading.NORTH) {return true;}
+        }
+        if (toStringCheck(player_space, egde_50)) {
+            if (player_heading == Heading.NORTH) {return true;}
+        }
+        if (toStringCheck(player_space, egde_60)) {
+            if (player_heading == Heading.NORTH) {return true;}
+        }
+        if (toStringCheck(player_space,egde_70)) {
+            if (player_heading == Heading.NORTH) {return true;}
+            if (player_heading == Heading.EAST) {return true;}
+        }
+        if (toStringCheck(player_space, egde_71)) {
+            if (player_heading == Heading.EAST) {return true;}
+        }
+        if (toStringCheck(player_space, egde_72)) {
+            if (player_heading == Heading.EAST) {return true;}
+        }
+        if (toStringCheck(player_space, egde_73)) {
+            if (player_heading == Heading.EAST) {return true;}
+        }
+        if (toStringCheck(player_space, egde_74)) {
+            if (player_heading == Heading.EAST) {return true;}
+        }
+        if (toStringCheck(player_space, egde_75)) {
+            if (player_heading == Heading.EAST ) {return true;}
+        }
+        if (toStringCheck(player_space, egde_76)) {
+            if (player_heading == Heading.EAST) {return true;}
+        }
+        if (toStringCheck(player_space, egde_77)) {
+            if (player_heading == Heading.EAST) {return true;}
+            if (player_heading == Heading.SOUTH) { return true;}
+        }
+        if (toStringCheck(player_space, egde_67)) {
+            if (player_heading == Heading.SOUTH) { return true;}
+        }
+        if (toStringCheck(player_space, egde_57)) {
+            if (player_heading == Heading.SOUTH) {return true;}
+        }
+        if (toStringCheck(player_space, egde_47)) {
+            if (player_heading == Heading.SOUTH) {return true;}
+        }
+        if (toStringCheck(player_space, egde_37)) {
+            if (player_heading == Heading.SOUTH) {return true;}
+        }
+        if (toStringCheck(player_space, egde_27)) {
+            if (player_heading == Heading.SOUTH) {return true;}
+        }
+        if (toStringCheck(player_space, egde_17)) {
+            if (player_heading == Heading.SOUTH) {return true;}
+        }
+        if (toStringCheck(player_space, egde_07)) {
+            if (player_heading == Heading.SOUTH) {return true;}
+            if (player_heading == Heading.WEST) {return true;}
+        }
+        if (toStringCheck(player_space, egde_06)) {
+            if (player_heading == Heading.WEST) {return true;}
+        }
+        if (toStringCheck(player_space,egde_05)) {
+            if (player_heading == Heading.WEST) {return true;}
+        }
+        if (toStringCheck(player_space, egde_04)) {
+            if (player_heading == Heading.WEST) {return true;}
+        }
+        if (toStringCheck(player_space, egde_03)) {
+            if (player_heading == Heading.WEST) {return true;}
+        }
+        if (toStringCheck(player_space, egde_02)) {
+            if (player_heading == Heading.WEST) {return true;}
+        }
+        if (toStringCheck(player_space, egde_01)) {
+            if (player_heading == Heading.WEST) {return true;}
+        }
+
         return false;
     }
 
