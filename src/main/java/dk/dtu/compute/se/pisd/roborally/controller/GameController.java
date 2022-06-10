@@ -293,6 +293,7 @@ public class GameController  {
 
 
                 }
+                player.setHeading(space.gear(player));
             }
         }
     }

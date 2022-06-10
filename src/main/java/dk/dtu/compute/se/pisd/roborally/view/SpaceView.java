@@ -22,8 +22,6 @@
 package dk.dtu.compute.se.pisd.roborally.view;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
-import dk.dtu.compute.se.pisd.roborally.controller.ConveyorBelt;
-import dk.dtu.compute.se.pisd.roborally.model.Checkpoint;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 import javafx.scene.canvas.Canvas;
@@ -32,6 +30,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
+import javafx.scene.shape.*;
 import javafx.scene.shape.StrokeLineCap;
 import javafx.scene.text.Font;
 import org.jetbrains.annotations.NotNull;
@@ -364,6 +363,22 @@ public class SpaceView extends StackPane implements ViewObserver {
             this.getChildren().add(cp4);
         }
     }
+    private void updateGear() {
+        if (space.x == 4 && space.y == 5) {
+            Circle circle = new Circle();
+            circle.setCenterX(50.0f);
+            circle.setCenterY(50.0f);
+            circle.setRadius(25.0f);
+            circle.setFill(Color.GREY);
+            this.getChildren().add(circle);
+
+            Label g1 = new Label("L-rotate");
+            g1.setFont(Font.font("Tahoma",12));
+            g1.setTextFill(Color.AQUA);
+            this.getChildren().add(g1);
+
+        }
+    }
 
     @Override
     public void updateView(Subject subject) {
@@ -374,6 +389,7 @@ public class SpaceView extends StackPane implements ViewObserver {
         UpdateWalls();
         updateBelt();
         updateCP();
+        updateGear();
 
     }
 

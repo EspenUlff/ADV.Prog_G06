@@ -25,6 +25,7 @@ import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 //import dk.dtu.compute.se.pisd.roborally.controller.Checkpoint;
 import dk.dtu.compute.se.pisd.roborally.controller.ConveyorBelt;
 import dk.dtu.compute.se.pisd.roborally.controller.FieldAction;
+import dk.dtu.compute.se.pisd.roborally.controller.GameController;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -153,6 +154,7 @@ public class Space extends Subject {
     public Boolean BlockedWalls(@NotNull Player player) {
         Space player_space = player.getSpace();
         Heading player_heading = player.getHeading();
+
         Space wall_40 = new Space(board, 4, 0); Space wall_30 = new Space(board, 3, 0);
         Space wall_41 = new Space(board, 4, 1); Space wall_31 = new Space(board, 3, 1);
         Space wall_51 = new Space(board, 5, 1);
@@ -216,6 +218,22 @@ public class Space extends Subject {
             if (player_heading == Heading.SOUTH) {return true;}
         }
         return false;
+    }
+
+    /** Attempt at manually adding Gear that rotates left */
+    // ved ikke helt om det virker - Tobias//
+    public Heading gear(@NotNull Player player) {
+        Space player_space = player.getSpace();
+        Heading player_heading = player.getHeading();
+        Space gear_1 = new Space(board, 4, 5);
+
+        if (toStringcheck(player_space, gear_1)) {
+            if (player_heading == Heading.WEST)  {return  player_heading.SOUTH;}
+            if (player_heading == Heading.SOUTH) {return  player_heading.EAST;}
+            if (player_heading == Heading.EAST)  {return  player_heading.NORTH;}
+            if (player_heading == Heading.NORTH) {return  player_heading.WEST;}
+        }
+        return null;
     }
 
     public List<Heading> getWalls() {
